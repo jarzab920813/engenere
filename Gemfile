@@ -45,6 +45,8 @@ gem "slim-rails"
 
 gem 'foundation-rails'
 
+gem "cancan"
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

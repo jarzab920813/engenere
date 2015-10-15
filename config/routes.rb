@@ -3,8 +3,25 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  resources :users do
+  end
+
+  resources :fleets do
+    #collection ścieżki do których nie przesyłamy id
+    collection do 
+       
+    end
+    #member  ścieżki do który przesyłamy id
+    member do
+      # get 'index/projects/:id' => 'projects#index'
+
+    
+    end
+    
+  end
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'fleets#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
