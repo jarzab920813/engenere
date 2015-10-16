@@ -13,14 +13,14 @@ Rails.application.routes.draw do
     end
     #member  ścieżki do który przesyłamy id
     member do
-      # get 'index/projects/:id' => 'projects#index'
+      get 'index/fleets/:id' => 'fleets#index'
 
     
     end
     
   end
   # You can have the root of your site routed with "root"
-  root 'fleets#index'
+  root 'users#index'
 
 
   # Example of regular route:

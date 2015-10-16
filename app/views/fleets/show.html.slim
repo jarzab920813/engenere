@@ -1,0 +1,14 @@
+h1.page-header Floty
+-if @fleet.blank?
+	div.alert.alert-warning Brak dodanych flot.
+-else
+	table#users.table.table-striped
+		thead
+			tr
+				th Nazwa	
+				/ th uzytkownik
+		tbody
+			tr
+				td = @fleet.name 
+	= link_to 'cofnij', fleets_path 
+					

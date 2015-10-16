@@ -1,18 +1,25 @@
-h1 lista flot
 
-.icon-bar.vertical.five-up
-	.item
-		a abc1
-		label home5
-	.item
-		a abc2
-		label home4
-	.item
-		a abc3
-		label home3
-	.item
-		a abc4
-		label home2
-	.item
-		a abc5
-		label home1
+
+.wrapper.wrapper-content
+  .row
+		.col-lg-12
+		  .col-lg-6
+			h1 floty
+		-if @fleets.blank?
+			div.alert.alert-warning Brak dodanych flot.
+		-else
+			table#users.table.table-striped
+				thead
+					tr
+						th Nazwa	
+						th 
+				tbody
+					-@fleets.each do |fleet|
+						tr
+							td = link_to fleet.name ,fleet_path(fleet)
+							td = link_to "edytuj" , edit_fleet_path(fleet)
+
+
+		= link_to "nowa flota", new_fleet_path
+
+

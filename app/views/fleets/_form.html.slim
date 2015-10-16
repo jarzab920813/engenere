@@ -1,0 +1,10 @@
+= simple_form_for [@fleet] do |f|
+  / = f.error_notification
+  .form-inputs
+    = f.input :name, label: t("fleets.labels.name"), :wrapper => :horizontal_form
+    = f.button :submit, "Zapisz"
+
+  .hr-line-dashed
+  .form-group
+    .col-sm-4.col-sm-offset-2
+  = link_to 'cofnij', fleets_path 

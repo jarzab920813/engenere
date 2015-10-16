@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title cms_itelab
+    
+    body.fixed-sidebar
+      .row
+        .small-3.columns
+          #wrapper
+           == render 'layouts/navigation'
+        .small-9.columns
+          #page-wrapper.gray-bg
+            .row.border-bottom
+            / == render 'layouts/topnavbar'
+            == yield
