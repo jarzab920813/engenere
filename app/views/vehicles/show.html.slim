@@ -1,0 +1,14 @@
+h1.page-header Pojazdy
+-if @vehicles.blank?
+	div.alert.alert-warning Brak dodanych flot.
+-else
+	table#users.table.table-striped
+		thead
+			tr
+				th Nazwa	
+				/ th uzytkownik
+		tbody
+			tr
+				td = @vehicle.name 
+	= link_to 'cofnij', vehicles_path 
+					

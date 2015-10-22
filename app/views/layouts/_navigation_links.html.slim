@@ -1,5 +1,15 @@
     li.name
+      = link_to 'Home', root_path
+    li.toggle-topbar.menu-icon
+      a[href="#index"]
+        Menu
+    li.name
       = link_to 'Floty', fleets_path
     li.toggle-topbar.menu-icon
       a[href="fleets#index"]
+        Menu
+    li.name
+      = link_to 'Pojazdy', vehicles_path
+    li.toggle-topbar.menu-icon
+      a[href="vehicles#index"]
         Menu

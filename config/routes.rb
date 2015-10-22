@@ -6,18 +6,24 @@ Rails.application.routes.draw do
   resources :users do
   end
 
+  resources :vehicles do
+  	#collection ścieżki do których nie przesyłamy id
+    collection do 
+    end
+    #member  ścieżki do który przesyłamy id
+    member do
+      get 'index/vehicels/:id' => 'vehicles#index'
+    end 
+  end
+
   resources :fleets do
     #collection ścieżki do których nie przesyłamy id
     collection do 
-       
     end
     #member  ścieżki do który przesyłamy id
     member do
       get 'index/fleets/:id' => 'fleets#index'
-      
-    
-    end
-    
+    end 
   end
   # You can have the root of your site routed with "root"
   root 'users#index'

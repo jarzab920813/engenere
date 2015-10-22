@@ -1,0 +1,23 @@
+.wrapper.wrapper-content
+  .row
+		.col-lg-12
+			h1 Pojazdy
+		-if @vehicles.blank?
+			div.alert.alert-warning Brak dodanych pojzadów.
+		-else
+			.col-lg-12
+				table.table.table-striped
+					thead
+						tr
+							th Nazwa	
+							th
+							th 
+					tbody
+						-@vehicles.each do |vehicle|
+							tr
+								td = link_to vehicle.name ,vehicle_path(vehicle)
+								td = link_to "edytuj", edit_vehicle_path(vehicle)
+								td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Are you sure?" }
+
+= link_to "nowy pojazd", new_vehicle_path
+
