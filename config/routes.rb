@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     #member  ścieżki do który przesyłamy id
     member do
       get 'index/fleets/:id' => 'fleets#index'
-
+      
     
     end
     

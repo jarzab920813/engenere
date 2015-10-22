@@ -3,22 +3,23 @@
 .wrapper.wrapper-content
   .row
 		.col-lg-12
-		  .col-lg-6
 			h1 floty
 		-if @fleets.blank?
 			div.alert.alert-warning Brak dodanych flot.
 		-else
-			table#users.table.table-striped
-				thead
-					tr
-						th Nazwa	
-						th 
-				tbody
-					-@fleets.each do |fleet|
+			.col-lg-12
+				table.table.table-striped
+					thead
 						tr
-							td = link_to fleet.name ,fleet_path(fleet)
-							td = link_to "edytuj" , edit_fleet_path(fleet)
-
+							th Nazwa	
+							th
+							th 
+					tbody
+						-@fleets.each do |fleet|
+							tr
+								td = link_to fleet.name ,fleet_path(fleet)
+								td = link_to "edytuj", edit_fleet_path(fleet)
+								td = link_to 'usuń', fleet_path(fleet) , :method => :delete, data: { confirm: "Are you sure?" }
 
 		= link_to "nowa flota", new_fleet_path
 
