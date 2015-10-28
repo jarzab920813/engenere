@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+unless TypesOfVehicle.any?
+  puts "Dodaje pojazdy ..."
+  trading_types = [
+    { name: "Samochód osobowy" },
+    { name: "Samochód ciężarowy" },
+    { name: "Ciągnik" },
+    { name: "Przyczepa" }
+  ]
+
+  TypesOfVehicle.create( trading_types )
+end

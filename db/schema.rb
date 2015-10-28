@@ -11,14 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022191328) do
+ActiveRecord::Schema.define(version: 20151028210149) do
 
   create_table "fleets", force: :cascade do |t|
-    t.string   "name",                 limit: 255
-    t.string   "list_of_vechicles_id", limit: 255
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "user_id",              limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id",    limit: 4
+  end
+
+  create_table "types_of_vehicles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +56,7 @@ ActiveRecord::Schema.define(version: 20151022191328) do
     t.integer  "user_id",             limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "fleet_id",            limit: 4
   end
 
 end

@@ -9,13 +9,19 @@
 				table.table.table-striped
 					thead
 						tr
-							th Nazwa	
+							th Nazwa
+							th Marka
+							th Model
+							th Nr. rejestracyjy	
 							th
 							th 
 					tbody
 						-@vehicles.each do |vehicle|
 							tr
 								td = link_to vehicle.name ,vehicle_path(vehicle)
+								td = vehicle.brand 
+								td = vehicle.model
+								td = vehicle.registration_number
 								td = link_to "edytuj", edit_vehicle_path(vehicle)
 								td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Are you sure?" }
 

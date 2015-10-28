@@ -2,6 +2,13 @@
   / = f.error_notification
   .form-inputs
     = f.input :name, label: t("vehicle.labels.name"), :wrapper => :horizontal_form
+    = f.input :year, label: t("vehicle.labels.year"), :wrapper => :horizontal_form
+    = f.input :brand, label: t("vehicle.labels.brand"), :wrapper => :horizontal_form
+    = f.input :model, label: t("vehicle.labels.model"), :wrapper => :horizontal_form
+    = f.input :vin, label: t("vehicle.labels.vin"), :wrapper => :horizontal_form
+    = f.input :registration_number, label: t("vehicle.labels.registration_number"), :wrapper => :horizontal_form
+    = f.input :type_of_vehicle_id, label: t("vehicle.labels.type_of_vehicle"), :wrapper => :horizontal_form, collection: TypesOfVehicle.all
+   
     = f.button :submit, "Zapisz"
 
   .hr-line-dashed

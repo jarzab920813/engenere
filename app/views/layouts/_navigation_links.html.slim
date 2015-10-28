@@ -1,15 +1,21 @@
     li.name
       = link_to 'Home', root_path
     li.toggle-topbar.menu-icon
-      a[href="#index"]
-        Menu
+      a[href="#index"] 
     li.name
       = link_to 'Floty', fleets_path
     li.toggle-topbar.menu-icon
-      a[href="fleets#index"]
-        Menu
+      a[href="fleets#index"]      
     li.name
       = link_to 'Pojazdy', vehicles_path
-    li.toggle-topbar.menu-icon
+    li.toggle-topbar.menu-icon.last
       a[href="vehicles#index"]
-        Menu
+    li.name
+      = link_to @current_user.email, edit_user_registration_path
+    li.toggle-topbar.menu-icon
+      a[href=""]
+    li.name
+      = link_to " wyloguj ", destroy_user_session_path, :method => :delete
+    li.toggle-topbar.menu-icon
+      a[href=""]
+        

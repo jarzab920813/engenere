@@ -1,14 +1,26 @@
-h1.page-header Pojazdy
--if @vehicles.blank?
-	div.alert.alert-warning Brak dodanych flot.
--else
-	table#users.table.table-striped
-		thead
-			tr
-				th Nazwa	
-				/ th uzytkownik
-		tbody
-			tr
-				td = @vehicle.name 
-	= link_to 'cofnij', vehicles_path 
+h1.page-header = "Szczeguły " + @vehicle.name
+/-if @vehicle.blank?
+/	div.alert.alert-warning Brak dodanych flot.
+/-else
+table#users.table.table-striped
+	thead
+		tr
+			th Nazwa
+			th Rok produkcji
+			th Marka
+			th Model
+			th VIN
+			th Numer rejestracyjny
+			th Typ pojazdu
+	tbody
+		tr
+			td = @vehicle.name 
+			td = @vehicle.year
+			td = @vehicle.brand
+			td = @vehicle.model
+			td = @vehicle.vin
+			td = @vehicle.registration_number
+			td = @vehicle.type_of_vehicle_id
+
+= link_to 'cofnij', vehicles_path 
 					

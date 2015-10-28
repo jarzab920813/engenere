@@ -8,10 +8,12 @@ class VehiclesController < ApplicationController
 
 	def show
  		@vehicle =Vehicle.find(params[:id])
+ 		@current_user = User.find(current_user.id)
   end
 
   def new
   	@vehicle = Vehicle.new
+  	@current_user = User.find(current_user.id)
   end
 
   def create
@@ -41,9 +43,11 @@ class VehiclesController < ApplicationController
 
   def edit
   	@vehicle = Vehicle.find(params[:id])
+  	@current_user = User.find(current_user.id)
   end
   def update
 	  @vehicle = Vehicle.find(params[:id])
+	  @current_user = User.find(current_user.id)
 	 
 	  if @vehicle.update(vehicle_params)
 	    redirect_to @vehicle
@@ -53,7 +57,7 @@ class VehiclesController < ApplicationController
 	end
 
   def vehicle_params
-  	params.require(:vehicle).permit(:name, :year, :brand, :model, :vin, :registration_number)
+  	params.require(:vehicle).permit(:name, :year, :brand, :model, :vin, :registration_number, :type_of_vehicle_id)
   end
 
 end

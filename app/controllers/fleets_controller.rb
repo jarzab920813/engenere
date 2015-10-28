@@ -8,10 +8,12 @@ class FleetsController < ApplicationController
 
  	def show
  		@fleet =Fleet.find(params[:id])
+ 		@current_user = User.find(current_user.id)
   end
 
   def new
   	@fleet = Fleet.new
+  	@current_user = User.find(current_user.id)
   end
 
   def create
@@ -41,9 +43,11 @@ class FleetsController < ApplicationController
 
   def edit
   	@fleet = Fleet.find(params[:id])
+  	@current_user = User.find(current_user.id)
   end
   def update
 	  @fleet = Fleet.find(params[:id])
+	  @current_user = User.find(current_user.id)
 	 
 	  if @fleet.update(fleet_params)
 	    redirect_to @fleet

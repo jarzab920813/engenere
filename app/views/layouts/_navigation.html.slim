@@ -11,8 +11,5 @@ nav.top-bar[data-topbar]
    		
     ul
       == render 'layouts/navigation_links'
-   	#user_nav
-		- if user_signed_in?
-			a zalogowano jako, current_user.email
-			= link_to " edytuj profil ", edit_user_registration_path
-			= link_to " wyloguj ", destroy_user_session_path, :method => :delete
+      
+
