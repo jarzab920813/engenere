@@ -47,6 +47,9 @@ gem 'devise'
 
 gem "slim-rails"
 
+gem 'carrierwave'
+
+gem 'rmagick'
 
 gem "cancan"
 

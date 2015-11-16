@@ -7,8 +7,14 @@ class VehiclesController < ApplicationController
 	end
 
 	def show
- 		@vehicle =Vehicle.find(params[:id])
+
+ 		@vehicle = Vehicle.find(params[:id])
  		@current_user = User.find(current_user.id)
+    @type_of_vehicle = TypesOfVehicle.where(:id => @vehicle.type_of_vehicle_id).first
+    #raise "scycki"
+    @documents = Document.where(:vehicle_id =>params[:id])
+    # raise  @documents
+
   end
 
   def new
@@ -32,11 +38,12 @@ class VehiclesController < ApplicationController
       if @vehicle.destroy
         flash[:success] = t("vehicle.deleted", :name => @vehicle.name) 
         #Menu.where(parent_id: @menu.id).destroy_all
-        redirect_to @vehicle
+       
       else
         flash[:error] = t("vehicle.not_deleted", :name => @vehicle.name)
         
       end
+      format.html { redirect_to vehicles_path }
     end
 
   end

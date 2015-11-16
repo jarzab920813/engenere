@@ -25,6 +25,17 @@ Rails.application.routes.draw do
       get 'index/fleets/:id' => 'fleets#index'
     end 
   end
+
+  resources :documents 
+  # do
+  #   collection do 
+  #     post :create
+  #   end
+  #   member do
+  #     get :download
+  #   end
+  # end
+
   # You can have the root of your site routed with "root"
   root 'users#index'
 

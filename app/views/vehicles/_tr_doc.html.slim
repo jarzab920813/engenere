@@ -1,0 +1,21 @@
+-@documents.each do |document|
+  tr
+    td = document.name 
+    td.small = image_tag document.file
+    td 
+      a = link_to "usun", document_path(document.id),  class: "glyphicon glyphicon-remove", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+  / td = @document.file
+  / td = "#{Rails.root}#{document.url.url}"
+  / td  
+  /   -if [".jpg",".png", ".gif"].include?(File.extname("#{document.file}"))
+  /     =link_to(image_tag("#{document.file.url(:thumb)}") ,document.file.url, :rel => "lightbox")
+  /   -else
+  /     i.fa.fa-file-text.fa-3x
+  / td = user.name + " " + user.surname
+  / - if can? :manage, document
+  /   td 
+  /     = link_to "", document_path(document.id), style: "color: #FF0000", class: "glyphicon glyphicon-remove", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+  /     = link_to "", download_document_path(document), class: "glyphicon glyphicon-download-alt"
+  / -else
+  /   td[colspan = 2]
+  

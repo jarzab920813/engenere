@@ -1,0 +1,11 @@
+= simple_form_for @document do |f| 
+	= f.error_notification 
+	.form-inputs
+  	= f.input :name, required: true, :autofocus => true, :as => :string , label: 'Nazwa'
+    = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
+    = f.file_field :file, label: "Plik"
+    br
+	form-actions
+  	= f.button :submit, "Zapisz"
+    span.or lub
+    = link_to "Wróć", :back, :class => "btn btn-default"

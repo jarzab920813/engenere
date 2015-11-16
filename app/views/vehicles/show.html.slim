@@ -1,4 +1,4 @@
-h1.page-header = "Szczeguły " + @vehicle.name
+h1.page-header = "Szczegóły " + @vehicle.name
 /-if @vehicle.blank?
 /	div.alert.alert-warning Brak dodanych flot.
 /-else
@@ -20,7 +20,55 @@ table#users.table.table-striped
 			td = @vehicle.model
 			td = @vehicle.vin
 			td = @vehicle.registration_number
-			td = @vehicle.type_of_vehicle_id
+			td = @type_of_vehicle.name
+
+
+/ table#documents.table.table-striped
+/ 	thead
+/ 		tr
+/ 			th Nazwa
+/ 			th Miniatura
+/ 			th Akcje
+
+/ 	tbody
+/ 		tr
+/ 			td 
+/ 			td 
+/ 			td
+ul.nav.nav-tabs
+	li class=("active" if !params[:documents].nil?) role="presentation"
+    = link_to 'Dokumenty', documents_path(:vehicle_id => params[:id])
+    
+	h2.page-header Dokumenty
+	= link_to "Nowy dokument", new_document_path(:vehicle_id => params[:id]), class: "btn btn-primary "
+	-if @vehicle.documents.empty?
+	  div.alert.alert-warning role="alert" Brak dokumentów załączonych do tego zadania.
+	-else
+	  .panel.panel-default
+	    table.table.table-striped
+	      thead
+	        tr
+	          th Nazwa
+	          th Miniatura
+	          th Akcje
+	      tbody
+	        / -@documents.each do |document| 
+            = render :partial => "tr_doc" 
+
+        / center
+        /   = will_paginate @documents,:param_name => 'doc', renderer: BootstrapPagination::Rails
+
+/ = simple_form_for @document do |f| 
+/ 	= f.error_notification 
+/ 	.form-inputs
+/   	= f.input :name, required: true, :autofocus => true, :as => :string , label: 'Nazwa'
+/     = f.input :vehicle_id, as: :hidden, value: params[:id]
+/     / = f.input :user_id, :as => :select, collection: User.all
+/     = f.file_field :url, label: "Plik"
+/     br
+/ 	form-actions
+/   	= f.button :submit, "Zapisz"
+
 
 = link_to 'cofnij', vehicles_path 
 					

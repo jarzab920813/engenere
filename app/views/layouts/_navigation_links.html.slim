@@ -10,12 +10,12 @@
       = link_to 'Pojazdy', vehicles_path
     li.toggle-topbar.menu-icon.last
       a[href="vehicles#index"]
-    li.name
-      = link_to @current_user.email, edit_user_registration_path
-    li.toggle-topbar.menu-icon
-      a[href=""]
-    li.name
+    li.name.right
       = link_to " wyloguj ", destroy_user_session_path, :method => :delete
     li.toggle-topbar.menu-icon
       a[href=""]
+    li.name.right
+        = link_to @current_user.email, edit_user_registration_path
+    li.toggle-topbar.menu-icon
+        a[href=""]
         

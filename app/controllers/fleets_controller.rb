@@ -32,11 +32,12 @@ class FleetsController < ApplicationController
       if @fleet.destroy
         flash[:success] = t("fleet.deleted", :name => @fleet.name) 
         #Menu.where(parent_id: @menu.id).destroy_all
-        redirect_to @fleet
+        #redirect_to @fleet
       else
         flash[:error] = t("fleet.not_deleted", :name => @fleet.name)
         
       end
+      format.html { redirect_to fleets_path }
     end
 
   end
