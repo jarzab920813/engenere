@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   end
 
   resources :documents 
+
+  get "/download_file/:id(/:name)" => "documents#download_file", :as => :download_file
   # do
   #   collection do 
   #     post :create

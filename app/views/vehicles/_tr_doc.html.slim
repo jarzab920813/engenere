@@ -4,6 +4,11 @@
     td.small = image_tag document.file
     td 
       a = link_to "usun", document_path(document.id),  class: "glyphicon glyphicon-remove", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+      a = "  "
+      a.download href="#{ download_file_path(:id => document.id, :name => document.file_identifier) }"
+        i.fa.fa-download
+        | Pobierz plik #{document.file.to_s.split('.').last}
+
   / td = @document.file
   / td = "#{Rails.root}#{document.url.url}"
   / td  

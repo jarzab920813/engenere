@@ -57,6 +57,16 @@ class DocumentsController < ApplicationController
     end
 
   end
+  def download_file
+    #@reference = Reference.find(2)
+    #@references = reference
+    #raise @references.inspect
+    documents = Document.find(params[:id])
+    send_file("#{Rails.root}/public/#{documents.file}", 
+              :disposition => 'attachment')
+
+  end
+
   def document_params
       params.require(:document).permit(:file, :name, :vehicle_id )
   end

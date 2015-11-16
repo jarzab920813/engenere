@@ -6,6 +6,9 @@ class DocumentsUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  IMAGE_EXTENSIONS = %w(jpg png jpg gif bmp)
+  DOCUMENT_EXTENSIONS = %w(exe pdf doc docm xls docx pptx )
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -32,20 +35,30 @@ class DocumentsUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
+
+  version :thumb, :if => :image? do
     process :resize_to_fit => [50, 50]
   end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
+  def extension_white_list
+    IMAGE_EXTENSIONS + DOCUMENT_EXTENSIONS
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  protected
+  def image?(new_file)
+    new_file.content_type.start_with? 'image'
+  end
 
 end
