@@ -1,7 +1,11 @@
 -@documents.each do |document|
   tr
     td = document.name 
-    td.small = image_tag document.file
+    - if document.is_image?
+    	td.small = image_tag document.file
+    - else
+    	td
+    		i.fa.fa-file
     td 
       a = link_to "usun", document_path(document.id),  class: "glyphicon glyphicon-remove", method: :delete, data:{confirm: "Czy jesteś pewien?"}
       a = "  "

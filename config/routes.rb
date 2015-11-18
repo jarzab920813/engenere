@@ -26,7 +26,22 @@ Rails.application.routes.draw do
     end 
   end
 
-  resources :documents 
+  resources :documents do 
+  	collection do 
+    end
+  	member do
+
+    end 
+
+	end
+	 resources :events do 
+  	collection do 
+    end
+  	member do
+
+    end 
+
+	end
 
   get "/download_file/:id(/:name)" => "documents#download_file", :as => :download_file
   # do

@@ -21,7 +21,8 @@ class FleetsController < ApplicationController
   	@fleet = Fleet.new(fleet_params)
   	@fleet.user_id = current_user.id
  	  @fleet.save
-  	redirect_to @fleet
+  	redirect_to fleets_path
+  	
   end	
 
   def destroy

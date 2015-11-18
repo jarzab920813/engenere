@@ -1,0 +1,16 @@
+= simple_form_for [@event] do |f|
+  / = f.error_notification
+  .form-inputs
+    = f.input :name, label: t("event.labels.name"), :wrapper => :horizontal_form
+    = f.input :date_event_start, label: t("event.labels.date_event_start"), :wrapper => :horizontal_form
+    = f.input :date_next_event, label: t("event.labels.date_next_event"), :wrapper => :horizontal_form
+    = f.input :current_mileage, label: t("event.labels.current_mileage"), :wrapper => :horizontal_form
+    = f.input :mileage_to_next_event, label: t("event.labels.mileage_to_next_event"), :wrapper => :horizontal_form
+    /= f.input :type_of_vehicle_id, label: t("event.labels.type_of_vehicle"), :wrapper => :horizontal_form, collection: TypesOfEvents.all
+   
+    = f.button :submit, "Zapisz"
+
+  .hr-line-dashed
+  .form-group
+    .col-sm-4.col-sm-offset-2
+  = link_to 'cofnij', vehicle_path(:id => @event.vehicle_id)

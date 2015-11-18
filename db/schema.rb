@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109143047) do
+ActiveRecord::Schema.define(version: 20151118133429) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -21,11 +21,30 @@ ActiveRecord::Schema.define(version: 20151109143047) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "name",                  limit: 255
+    t.date     "date_event_start"
+    t.date     "date_next_event"
+    t.integer  "current_mileage",       limit: 4
+    t.integer  "mileage_to_next_event", limit: 4
+    t.integer  "vehicle_id",            limit: 4
+    t.integer  "type_of_event_id",      limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
   create_table "fleets", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "user_id",    limit: 4
+  end
+
+  create_table "types_of_events", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "types_of_vehicles", force: :cascade do |t|

@@ -13,6 +13,7 @@ class VehiclesController < ApplicationController
     @type_of_vehicle = TypesOfVehicle.where(:id => @vehicle.type_of_vehicle_id).first
     #raise "scycki"
     @documents = Document.where(:vehicle_id =>params[:id])
+    @events = Event.where(:vehicle_id =>params[:id])
     # raise  @documents
 
   end

@@ -23,14 +23,16 @@ class DocumentsController < ApplicationController
     # @document.vehicle_id = params[:vehicle_id]
     if @document.save
       flash[:notice] = "Dokument został dodany."
-      redirect_to @document
-     # raise @document
+      redirect_to vehicle_path(:id => @document.vehicle_id)
+      #redirect_to controller: 'vehicles', :action => "show", :vehicle_id => :id
+      # raise @document
       # redirect_to  vehicle_path(Vehicle.find(@document.vehicle_id), @document.vehicle_id)
     else
       flash[:notice] = "Dokument nie został dodany."
       raise @document
       # redirect_to vehicle_path(vehicle.find(@document.vehicle_path), :documents => 1)
     end
+
   end
 
 	def index
@@ -43,6 +45,8 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document = Document.find(params[:id])
+    vehicle_id = params[:vehicle_id]
+
 
     respond_to do |format|
       if @document.destroy
@@ -53,7 +57,8 @@ class DocumentsController < ApplicationController
         flash[:error] = t("documents.not_deleted", :name => @document.name)
         
       end
-      format.html { redirect_to documents_path }
+      #raise vehicle_id
+      format.html { redirect_to vehicle_path(@document.vehicle_id) }
     end
 
   end

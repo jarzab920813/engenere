@@ -1,60 +1,75 @@
-h1.page-header = "Szczegóły " + @vehicle.name
+
 /-if @vehicle.blank?
 /	div.alert.alert-warning Brak dodanych flot.
 /-else
-table#users.table.table-striped
-	thead
-		tr
-			th Nazwa
-			th Rok produkcji
-			th Marka
-			th Model
-			th VIN
-			th Numer rejestracyjny
-			th Typ pojazdu
-	tbody
-		tr
-			td = @vehicle.name 
-			td = @vehicle.year
-			td = @vehicle.brand
-			td = @vehicle.model
-			td = @vehicle.vin
-			td = @vehicle.registration_number
-			td = @type_of_vehicle.name
+
+.row
+	.large-12.column
+		h1.page-header = "Szczegóły " + @vehicle.name
+		ul.tabs data-tab="" role="tablist"
+			li.tab-title.active
+				a href="#informations" role="tab" tabindex="0" aria-selected="true" aria-controls="informations" Informacje
+			li.tab-title
+			  a href="#documents" role="tab" tabindex="0" aria-selected="false" aria-controls="documents" Dkumenty
+			li.tab-title
+				a href="#events" role="tab" tabindex="0" aria-selected="false" aria-controls="events" Zdarzenia
+		.tabs-content
+			section role="tabpanel" aria-hidden="true" class="content active" id="informations"
+				table#users.table.table-striped
+					thead
+						tr
+							th Nazwa
+							th Rok produkcji
+							th Marka
+							th Model
+							th VIN
+							th Numer rejestracyjny
+							th Typ pojazdu
+					tbody
+						tr
+							td = @vehicle.name 
+							td = @vehicle.year
+							td = @vehicle.brand
+							td = @vehicle.model
+							td = @vehicle.vin
+							td = @vehicle.registration_number
+							td = @type_of_vehicle.name
+			section role="tabpanel" aria-hidden="false" class="content" id="documents"
+				-if @vehicle.documents.empty?
+				  div.alert.alert-warning role="alert" Brak dokumentów załączonych do tego pojazdu.
+				-else
+				  .panel.panel-default
+				    table.table.table-striped
+				      thead
+				        tr
+				          th Nazwa
+				          th Miniatura
+				          th Akcje
+				      tbody
+			          = render :partial => "tr_doc" 
+
+				= link_to "Nowy dokument", new_document_path(:vehicle_id => params[:id]), class: "btn btn-primary "
+			section role="tabpanel" aria-hidden="false" class="content" id="events"
+				-if @vehicle.events.empty?
+					div.alert.alert-warning role="alert" Brak zdarzeń dla tego pojazdu.
+				-else
+					.panel.panel-default
+						table.table.table-striped
+							thead
+								tr
+									th Zdarzenie
+									th Data Startu
+									th Akcje
+								tbody
+							/ = render :partial => "tr_doc" 
+
+				= link_to "Nowe zdarzenie", new_event_path(:vehicle_id => params[:id]), class: "btn btn-primary "
 
 
-/ table#documents.table.table-striped
-/ 	thead
-/ 		tr
-/ 			th Nazwa
-/ 			th Miniatura
-/ 			th Akcje
 
-/ 	tbody
-/ 		tr
-/ 			td 
-/ 			td 
-/ 			td
-ul.nav.nav-tabs
-	li class=("active" if !params[:documents].nil?) role="presentation"
-    = link_to 'Dokumenty', documents_path(:vehicle_id => params[:id])
-    
-	h2.page-header Dokumenty
-	= link_to "Nowy dokument", new_document_path(:vehicle_id => params[:id]), class: "btn btn-primary "
-	-if @vehicle.documents.empty?
-	  div.alert.alert-warning role="alert" Brak dokumentów załączonych do tego zadania.
-	-else
-	  .panel.panel-default
-	    table.table.table-striped
-	      thead
-	        tr
-	          th Nazwa
-	          th Miniatura
-	          th Akcje
-	      tbody
-	        / -@documents.each do |document| 
-            = render :partial => "tr_doc" 
-
+.row
+	.large-12.column
+  	= link_to 'cofnij', vehicles_path 
         / center
         /   = will_paginate @documents,:param_name => 'doc', renderer: BootstrapPagination::Rails
 
@@ -70,5 +85,5 @@ ul.nav.nav-tabs
 /   	= f.button :submit, "Zapisz"
 
 
-= link_to 'cofnij', vehicles_path 
-					
+javascript:
+	$(document).foundation();
