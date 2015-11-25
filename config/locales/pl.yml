@@ -1,0 +1,8 @@
+pl:
+  vehicle:
+    labels:
+      year: "rok produkcji"
+  event:
+    labels:
+      date_event_start: "Dzień zdarzenia"
+      date_next_event: "cos"

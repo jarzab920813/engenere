@@ -2,12 +2,29 @@
   / = f.error_notification
   .form-inputs
     = f.input :name, label: t("event.labels.name"), :wrapper => :horizontal_form
-    = f.input :date_event_start, label: t("event.labels.date_event_start"), :wrapper => :horizontal_form
-    = f.input :date_next_event, label: t("event.labels.date_next_event"), :wrapper => :horizontal_form
+    .row.form-group
+      label.col-sm-2.control-label = f.label :date_event_start
+      .col-sm-2
+        .input-group.date
+          span.input-group-addon
+            i.fa.fa-calendar
+          = f.input_field :date_event_start, as: :string, class: "form-control", :value => Time.now.strftime('%Y-%m-%d')
+    .row.form-group
+      label.col-sm-2.control-label = f.label :date_event_start
+      .col-sm-2
+        .input-group.date
+          span.input-group-addon
+            i.fa.fa-calendar
+          = f.input_field :date_next_event, as: :string, class: "form-control", :value => 12.months.from_now.strftime('%Y-%m-%d')
+
+    / = f.input :date_event_start, label: t("event.labels.date_event_start"), :wrapper => :horizontal_form
+    / = f.input :date_next_event, label: t("event.labels.date_next_event"), :wrapper => :horizontal_form
     = f.input :current_mileage, label: t("event.labels.current_mileage"), :wrapper => :horizontal_form
     = f.input :mileage_to_next_event, label: t("event.labels.mileage_to_next_event"), :wrapper => :horizontal_form
-    /= f.input :type_of_vehicle_id, label: t("event.labels.type_of_vehicle"), :wrapper => :horizontal_form, collection: TypesOfEvents.all
-   
+    = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
+    = f.input :type_of_event_id, label: t("event.labels.type_of_events"), :wrapper => :horizontal_form,  :selected => "", collection: TypesOfEvent.all
+
+
     = f.button :submit, "Zapisz"
 
   .hr-line-dashed

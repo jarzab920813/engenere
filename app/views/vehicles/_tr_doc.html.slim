@@ -2,7 +2,10 @@
   tr
     td = document.name 
     - if document.is_image?
-    	td.small = image_tag document.file
+      td.small href="#" data-reveal-id="#{document.name[0..3].gsub(/[^a-zA-Z\s.]/,'').strip}#{document.id}" = image_tag document.file
+      .reveal-modal.text-center id="#{document.name[0..3].gsub(/[^a-zA-Z\s.]/,'').strip}#{document.id}" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" 
+        a.modal-image = image_tag document.file 
+        a class="close-reveal-modal" aria-label="Close" &#215
     - else
     	td
     		i.fa.fa-file
@@ -12,6 +15,7 @@
       a.download href="#{ download_file_path(:id => document.id, :name => document.file_identifier) }"
         i.fa.fa-download
         | Pobierz plik #{document.file.to_s.split('.').last}
+
 
   / td = @document.file
   / td = "#{Rails.root}#{document.url.url}"

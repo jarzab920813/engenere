@@ -21,8 +21,8 @@ module VechiclesManagementSystem
     # config.i18n.default_locale = :de
 
     # For Foundation 5
-    config.assets.precompile += %w( vendor/modernizr )
-
+    # config.assets.precompile += %w( vendor/modernizr )
+    config.i18n.default_locale = :pl
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true

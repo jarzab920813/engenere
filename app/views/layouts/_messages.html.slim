@@ -5,3 +5,9 @@
       = content_tag :div, msg
       a.close[href="#"]
         | ×
+
+javascript:
+
+	$(document).ready(function(){
+		setTimeout(function(){$(".alert-box").slideUp(300);},3000);
+	});

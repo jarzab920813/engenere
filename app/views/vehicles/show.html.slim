@@ -1,8 +1,3 @@
-
-/-if @vehicle.blank?
-/	div.alert.alert-warning Brak dodanych flot.
-/-else
-
 .row
 	.large-12.column
 		h1.page-header = "Szczegóły " + @vehicle.name
@@ -58,31 +53,20 @@
 							thead
 								tr
 									th Zdarzenie
-									th Data Startu
-									th Akcje
+									th Data startu
+									th Następny
+									th Przebieg w dniu
+									th Przebieg przypominajka
+									th Typ zdarzenia
+									th akcje
 								tbody
-							/ = render :partial => "tr_doc" 
+							= render :partial => "tr_events" 
 
 				= link_to "Nowe zdarzenie", new_event_path(:vehicle_id => params[:id]), class: "btn btn-primary "
-
-
 
 .row
 	.large-12.column
   	= link_to 'cofnij', vehicles_path 
-        / center
-        /   = will_paginate @documents,:param_name => 'doc', renderer: BootstrapPagination::Rails
-
-/ = simple_form_for @document do |f| 
-/ 	= f.error_notification 
-/ 	.form-inputs
-/   	= f.input :name, required: true, :autofocus => true, :as => :string , label: 'Nazwa'
-/     = f.input :vehicle_id, as: :hidden, value: params[:id]
-/     / = f.input :user_id, :as => :select, collection: User.all
-/     = f.file_field :url, label: "Plik"
-/     br
-/ 	form-actions
-/   	= f.button :submit, "Zapisz"
 
 
 javascript:

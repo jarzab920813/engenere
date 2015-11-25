@@ -1,0 +1,13 @@
+-@events.each do |event|
+  tr
+    td = event.name 
+    td = event.date_event_start
+    td = event.date_next_event
+    td = event.current_mileage
+    td = event.mileage_to_next_event
+    td = event.type_event?
+    td 
+      a = link_to "usun", event_path(event.id),  class: "glyphicon glyphicon-remove", method: :delete, data:{confirm: "Czy jesteś pewien?"}
+      a = "  "
+      a = link_to "edytuj", edit_event_path(event)
+		

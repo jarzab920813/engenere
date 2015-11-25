@@ -7,7 +7,8 @@
     = f.input :model, label: t("vehicle.labels.model"), :wrapper => :horizontal_form
     = f.input :vin, label: t("vehicle.labels.vin"), :wrapper => :horizontal_form
     = f.input :registration_number, label: t("vehicle.labels.registration_number"), :wrapper => :horizontal_form
-    = f.input :type_of_vehicle_id, label: t("vehicle.labels.type_of_vehicle"), :wrapper => :horizontal_form, collection: TypesOfVehicle.all
+    = f.input :type_of_vehicle_id, label: t("vehicle.labels.type_of_vehicle"), :wrapper => :horizontal_form, :selected => "", collection: TypesOfVehicle.all
+    = f.input :fleet_id, label: t("vehicle.labels.fleet"), :wrapper => :horizontal_form, collection: Fleet.where(:user_id => current_user)
    
     = f.button :submit, "Zapisz"
 

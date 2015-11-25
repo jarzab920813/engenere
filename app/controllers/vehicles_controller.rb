@@ -3,7 +3,6 @@ class VehiclesController < ApplicationController
 
 	def index
 		@vehicles = Vehicle.where(user_id: [current_user])
-	
 	end
 
 	def show
@@ -12,16 +11,18 @@ class VehiclesController < ApplicationController
  		@current_user = User.find(current_user.id)
     @type_of_vehicle = TypesOfVehicle.where(:id => @vehicle.type_of_vehicle_id).first
     #raise "scycki"
-    @documents = Document.where(:vehicle_id =>params[:id])
-    @events = Event.where(:vehicle_id =>params[:id])
-    # raise  @documents
-
+    @documents = Document.where(:vehicle_id => params[:id])
+    @events = Event.where(:vehicle_id => params[:id])
+    # @type_of_event = TypesOfEvent.where(:id => @events.type_of_event_id).first
+    # raise  @events
   end
+
 
   def new
-  	@vehicle = Vehicle.new
-  	@current_user = User.find(current_user.id)
+    @vehicle = Vehicle.new
+    @current_user = User.find(current_user.id)
   end
+
 
   def create
 
@@ -31,9 +32,9 @@ class VehiclesController < ApplicationController
   	redirect_to @vehicle
   end	
 
+
   def destroy
   	@vehicle = Vehicle.find(params[:id])
-  	
 
     respond_to do |format|
       if @vehicle.destroy

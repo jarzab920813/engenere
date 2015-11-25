@@ -3,4 +3,6 @@ class Vehicle < ActiveRecord::Base
 	has_one :types_of_vehicles
 	has_many :documents
 	has_many :events
+
+
 end
