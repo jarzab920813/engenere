@@ -23,7 +23,7 @@
 								td = vehicle.model
 								td = vehicle.registration_number
 								td = link_to "edytuj", edit_vehicle_path(vehicle)
-								td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Are you sure?" }
+								td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
 
 		= link_to "nowy pojazd", new_vehicle_path
 

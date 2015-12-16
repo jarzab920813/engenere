@@ -1,0 +1,26 @@
+== header(t("accounts.settings_header"), {t("accounts.cancel_account") => [remove_account_path, " btn-w-m btn-danger", "fa-times-circle"]})
+
+.col-lg-10
+  .ibox.float-e-margins.animated.fadeInRight
+    .ibox-title
+      h5 Dane dostępowe
+    .ibox-content
+      
+
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          .alert.alert-warning
+            i.fa.fa-warning= t("accounts.waiting_for_confirmation", email: resource.unconfirmed_email) 
+            = f.error_notification
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+          = f.input :password, hint: t("accounts.hint_leave_pass_empty"), required: false
+          = f.input :password_confirmation, required: false
+          .hr-line-dashed
+          = f.input :current_password, hint: t("accounts.hint_fill_pass_to_aprove"), required: true
+          .hr-line-dashed
+          .form-group
+            .col-sm-4.col-sm-offset-2
+              = f.submit t("save"), :class => "btn btn-primary"
+
+= render template: "accounts/sidebar"

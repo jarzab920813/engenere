@@ -1,0 +1,15 @@
+div
+  = image_tag "logo.png"
+
+  
+h3
+  | Zapomniałeś hasła?
+p.welcome_message = @splash_message.content.html_safe rescue "Tutaj powinna znajdować się wiadomość powitalna"
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :class => "m-t" }, :wrapper => :devise) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, autofocus: true, :placeholder => "Email", :input_html => { :value => params[:email]}
+  .form-actions
+    button.btn.btn-primary.block.full-width.m-b type="submit" Wyślij mi instrukcje resetowania hasła
+
+= render "devise/shared/links"

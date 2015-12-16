@@ -1,14 +1,43 @@
-h1.page-header Floty
--if @fleet.blank?
-	div.alert.alert-warning Brak dodanych flot.
--else
-	table#users.table.table-striped
-		thead
-			tr
-				th Nazwa	
-				/ th uzytkownik
-		tbody
-			tr
-				td = @fleet.name 
-	= link_to 'cofnij', fleets_path 
+h2.page-header = @fleet.name
+
+/ .wrapper.wrapper-content
+/ .row
+/ 	.col-lg-12
+/ 	h2 
+/ table#users.table.table-striped
+/ 	thead
+/ 		tr
+/ 			th Nazwa	
+/ 			/ th uzytkownik
+/ 	tbody
+/ 		tr
+/ 			td = @fleet.name 
+
+.wrapper.wrapper-content
+.row
+	.col-lg-12.center
+		h2 Pojazdy
+	-if @vehicles.blank?
+		div.alert.alert-warning Brak dodanych pojzadów.
+	-else
+		.col-lg-12
+			table.table.table-striped
+				thead
+					tr
+						th Nazwa
+						th Marka
+						th Model
+						th Nr. rejestracyjy	
+						th
+						th 
+				tbody
+					-@vehicles.each do |vehicle|
+						tr
+							td = link_to vehicle.name ,vehicle_path(vehicle)
+							td = vehicle.brand 
+							td = vehicle.model
+							td = vehicle.registration_number
+							td = link_to "edytuj", edit_vehicle_path(vehicle)
+							td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
+= link_to 'cofnij', fleets_path 
 					

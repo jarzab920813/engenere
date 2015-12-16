@@ -1,0 +1,22 @@
+.background-video
+  = vider_tag asset_url('movie.mp4')
+.content-devise
+  div
+    / = image_tag "logo.png"
+  h3.text-center
+    | Logowanie do systemu
+  = render 'layouts/messages'
+
+  h3.text-center VMS
+
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "m-t"} ) do |f|
+    .form-inputs
+      = f.input :email, required: false, autofocus: true, :placeholder => "Email"
+      = f.input :password, required: false, :placeholder => "Hasło"
+      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    .form-actions
+      button.btn.btn-primary.block.full-width.m-b type="submit" Zaloguj
+
+    = render "devise/shared/links"
+
+ 

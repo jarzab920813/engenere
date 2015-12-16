@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('.input-group.date').datepicker({
-    format: "yyyy-mm-dd",
-    language: "pl"
+  $('.datetimepicker').fdatetimepicker({
+    language: "pl",
+    format: "dd-mm-yyyy",
 	})

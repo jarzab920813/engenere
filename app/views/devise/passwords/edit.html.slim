@@ -1,0 +1,16 @@
+div
+  = image_tag "logo.png"
+h3
+  | Zmień hasło
+p.welcome_message = @splash_message.content.html_safe rescue "Tutaj powinna znajdować się wiadomość powitalna"
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, :class => "m-t" }, :wrapper => :devise) do |f|
+  = f.error_notification
+  = f.input :reset_password_token, as: :hidden
+  = f.full_error :reset_password_token
+  .form-inputs
+    = f.input :password, required: true, autofocus: true, :placeholder => "Nowe hasło"
+    = f.input :password_confirmation, required: true, :placeholder => "Potwierdzenie hasła"
+  .form-actions
+    button.btn.btn-primary.block.full-width.m-b type="submit" Zmień hasło
+    
+= render "devise/shared/links"

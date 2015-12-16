@@ -1,0 +1,52 @@
+.margin_top_devise_note{
+  margin-top:15px;
+}
+.gray-bg{
+  .background-color {
+    // background: white;
+    background-image: asset-url("background_log_in.png"); 
+    border-radius: 15px; 
+    margin-top: 10% !important;
+    color:#615B5B;
+  }
+        
+  .background-color .btn {
+    width:90%; margin:auto; 
+    margin-top:5px !important;
+    margin-bottom:5px !important;}
+        
+  .background-color .full-width {
+    width: 90% !important}
+
+  .background-color .form-control {
+    width:80% !important 
+    ;margin: auto}
+  
+  .form_login{
+    width:90%; 
+    margin:auto;
+  }
+  
+}
+.show_statute{
+  padding-right: 4px;
+  padding-left:  4px;
+}
+.loader_statute{
+  text-align:center;
+}
+.remember_me{
+  border: 1px solid #A09A9A !important;
+}
+.hover_remember{
+  border: 2px solid #1AB092 !important;
+}
+.welcome_message{
+  width:80%;
+  margin:auto;
+}
+
+
+/*potrzebne do wyswietlania filmiku w tle*/
+  html { height:100%; }
+  body { position:absolute; top:0; bottom:0; right:0; left:0; background-attachment: fixed !important;}

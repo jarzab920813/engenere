@@ -15,9 +15,8 @@
 //= require turbolinks
 //= require foundation
 //= require_tree .
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.pl.js
+//= require foundation-datetimepicker
+//= require jquery.vide
 
 $(function() {
   $(document).foundation();

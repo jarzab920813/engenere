@@ -1,0 +1,32 @@
+.wrapper.wrapper-content
+  .row
+		.col-lg-12
+			h1 Eventy
+		-if @events.blank?
+			div.alert.alert-warning Brak powiadomień.
+		-else
+			.col-lg-12
+				table.table.table-striped
+					thead
+						tr
+							th nazwa powiadomienia
+							th Data przeterminowania
+							th czas co przeterminowania
+							th 	
+							th
+							th 
+					tbody
+						-@events.each do |vehicle|
+							tr
+								td = vehicle.name
+								td = vehicle.date_next_event.to_date
+								/ td = convert_datediff_to_string(vehicle)
+								-if vehicle.date_next_event.nil? 
+									td = convert_datediff_to_string(Time.now, vehicle.date_next_event)
+								
+								/ td = vehicle.registration_number
+								/ td = link_to "edytuj", edit_vehicle_path(vehicle)
+								/ td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
+
+		/ = link_to "nowy pojazd", new_vehicle_path
+

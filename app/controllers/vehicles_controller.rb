@@ -28,8 +28,12 @@ class VehiclesController < ApplicationController
 
   	@vehicle = Vehicle.new(vehicle_params)
   	@vehicle.user_id = current_user.id
- 	  @vehicle.save
-  	redirect_to @vehicle
+ 	  if @vehicle.save
+      flash[:notice] =t("vehicle.created")
+    	redirect_to @vehicle
+    else
+      flash[:notice] =t("vehicle.not_created")
+    end
   end	
 
 
@@ -66,7 +70,7 @@ class VehiclesController < ApplicationController
 	end
 
   def vehicle_params
-  	params.require(:vehicle).permit(:name, :year, :brand, :model, :vin, :registration_number, :type_of_vehicle_id)
+  	params.require(:vehicle).permit(:name, :year, :brand, :model, :vin, :registration_number, :type_of_vehicle_id, :fleet_id)
   end
 
 end

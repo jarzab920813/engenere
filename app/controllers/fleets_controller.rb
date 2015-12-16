@@ -9,6 +9,7 @@ class FleetsController < ApplicationController
  	def show
  		@fleet =Fleet.find(params[:id])
  		@current_user = User.find(current_user.id)
+    @vehicles = Vehicle.where(:fleet_id => params[:id])
   end
 
   def new

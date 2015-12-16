@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end 
 
 	end
-	 resources :events do 
+	resources :events do 
   	collection do 
     end
   	member do
@@ -43,7 +43,10 @@ Rails.application.routes.draw do
 
 	end
 
+
   get "/download_file/:id(/:name)" => "documents#download_file", :as => :download_file
+
+  get 'dashboard/time_to_terminate' => 'dashboards#time_to_terminate', :as => :time_to_terminate
   # do
   #   collection do 
   #     post :create

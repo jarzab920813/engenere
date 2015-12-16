@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    - cache devise_head_key( yield(:title) ? "Invomail" : yield(:title), yield(:description) ? "Invomail" : yield(:description) ) do  
+      = favicon_link_tag 'favicon.ico'
+      meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+      title
+        = content_for?(:title) ? yield(:title) : 'Invomail'
+      meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Invomail'}"
+      = stylesheet_link_tag "devise", :media => 'all'
+
+      = render "devise/ie/jquery"
+
+    = csrf_meta_tags
+    = env_js
+
+    body.gray-bg
+      - cache devise_before_yield_key do
+        = render "devise/ie/browser_detect_alert"
+        = render "devise/statute_for_devise" if controller_name != "passwords"
+
+        .alert_browser.devise_alert
+        
+        / = vider_tag asset_url('invomail.mp4'),  position: '50% 50%'
+
+      .middle-box.text-center.loginscreen.animated.fadeInDown
+        p.form_login
+        div.background-color
+          = yield
+          
+      - cache devise_after_yield_key do
+        = javascript_include_tag 'devise'
+        = yield :js

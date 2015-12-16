@@ -17,13 +17,13 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      flash[:notice] = "Dokument został dodany."
+      flash[:notice] = "Zdarzenie zostało dodane."
       redirect_to vehicle_path(:id => @event.vehicle_id)
       #redirect_to controller: 'vehicles', :action => "show", :vehicle_id => :id
       # raise @document
       # redirect_to  vehicle_path(Vehicle.find(@document.vehicle_id), @document.vehicle_id)
     else
-      flash[:notice] = "Dokument nie został dodany."
+      flash[:notice] = "Zdarzenie nie zostało dodane."
       raise @document
       # redirect_to vehicle_path(vehicle.find(@document.vehicle_path), :documents => 1)
     end
