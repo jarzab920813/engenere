@@ -45,6 +45,35 @@
   width:80%;
   margin:auto;
 }
+.form-inputs label{
+  display: none;
+}
+.form-actions button{
+  width: 100%;
+  margin:0px;
+}
+.btn{
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  height: 50px;
+  padding-top: 13px;
+  color: #ffffff;
+  transition: background-color 0.8s ease;
+  background-color: #008CBA;
+  &:hover{
+    color: #ffffff;
+    background-color: #007095;
+  }
+}
+small{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+.margin_top_devise_note{
+  margin: 0px;
+}
 
 
 /*potrzebne do wyswietlania filmiku w tle*/

@@ -1,19 +1,23 @@
-div
-  / = image_tag "logo.png"
+.background-video
+  = vider_tag asset_url('movie.mp4')
+.content-devise
+	div
+	  / = image_tag "logo.png"
 
 
-h3
-  | Rejestracja
-= render 'layouts/messages'
+	h3.text-center
+	  | Rejestracja
+	= render 'layouts/messages'
 
-p "Witamy w systemie VMS"
+	h3.text-center 
+		|systemu VMS
 
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "m-t"}) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true, :placeholder => "Email"
-    = f.input :password, required: true, hint: ("Minimalnie #{@minimum_password_length} znaków" if @validatable), :placeholder => "Hasło"
-    = f.input :password_confirmation, required: true, :placeholder => "Potwierdzenie hasła"
-  .form-actions
-    button.btn.btn-primary.block.full-width.m-b type="submit" Zarejestruj
-= render "devise/shared/links"
+	= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "m-t"}) do |f|
+	  = f.error_notification
+	  .form-inputs
+	    = f.input :email, required: true, autofocus: true, :placeholder => "Email"
+	    = f.input :password, required: true, hint: ("Minimalnie #{@minimum_password_length} znaków" if @validatable), :placeholder => "Hasło"
+	    = f.input :password_confirmation, required: true, :placeholder => "Potwierdzenie hasła"
+	  .form-actions
+	    button.btn.btn-primary.block.full-width.m-b type="submit" Zarejestruj
+	= render "devise/shared/links"

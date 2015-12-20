@@ -1,14 +1,16 @@
 class DashboardController < ApplicationController
-	delegate :current_user
-	
+	# delegate :current_user
+	before_filter :authenticate_user!
 	def index
 
 		@events = find_events
 		@cos = current_user.vehicles.all
-		raise @cos.inspect
+		@vehicles = Vehicle.where(:user_id => current_user.id)
+		# raise @cos.inspect
 	end
 
 	def show
+
 	end
 
 		#
@@ -16,22 +18,36 @@ class DashboardController < ApplicationController
 		#
 
 	def find_events
-		
 		vehicles   = Vehicle.where(:user_id => current_user.id)
 		events_all = []
 
 		vehicles.each do |vehicle|
-
 			events = Event.where(:vehicle_id => vehicle.id)
 
 			events.each do |event|				
 				events_all << event 
-
 			end
-
 		end
-
 		return events_all
+	end
+
+	def find_vehicles
+		vehicles   = Vehicle.where(:user_id => current_user.id)
+		events_all = []
+
+		vehicles.each do |vehicle|
+			events = Event.where(:vehicle_id => vehicle.id)
+
+			events.each do |event|				
+				events_all << event 
+			end
+		end
+		return events_all
+	end
+
+	def events_for_vehicle(vehicle)
+		@events = Event.where(:vehicle_id => vehicle.id)
+		return @events
 	end
 
 	def time_to_terminate

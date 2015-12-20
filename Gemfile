@@ -29,6 +29,7 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'font-awesome-sass'
 gem 'foundation-datetimepicker-rails'
+gem 'time_diff'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

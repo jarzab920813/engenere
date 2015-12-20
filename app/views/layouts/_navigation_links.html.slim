@@ -1,9 +1,5 @@
     li.name
       = link_to 'Home', root_path
-    li.toggle-topbar.menu-icon
-      a[href="#index"] 
-    li.name
-      = link_to 'Dashboard'
     li.toggle-topbar.menu-icon.last
       a[href="dashboard#index"]
     li.name
@@ -18,8 +14,6 @@
       = link_to " wyloguj ", destroy_user_session_path, :method => :delete
     li.toggle-topbar.menu-icon
       a[href=""]
-    li.name.right
-        = link_to @current_user.email, edit_user_registration_path
-    li.toggle-topbar.menu-icon
-        a[href=""]
+    li.name.right.white-font
+        = @current_user.email
         

@@ -1,18 +1,18 @@
 - if controller_name != 'sessions'
   p.margin_top_devise_note
     small = t("devise.info.you_have_account")
-    = link_to t("devise.buttons.log_in"), new_session_path(resource_name), :class => "btn btn-sm btn-white btn-block"
+    = link_to t("devise.buttons.log_in"), new_session_path(resource_name), :class => "btn"
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
   br
-  pmargin_top_devise_note
+  pmargin_top_devise_note.text-center
     small
       = link_to t("devise.info.forgot_password"), new_password_path(resource_name)
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   = link_to t("devise.info.not_received_confirmation"), new_confirmation_path(resource_name), :class => "btn btn-sm btn-white btn-block"
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  p
+  p.text-center
     small = t("devise.info.not_have_account")
-    = link_to t("devise.info.create_new_account"), new_registration_path(resource_name), :class => "btn btn-sm btn-white btn-block"
+    = link_to t("devise.info.create_new_account"), new_registration_path(resource_name), :class => "btn"
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
   = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), :class => "btn btn-sm btn-white btn-block"
   br
@@ -20,14 +20,4 @@
   - resource_class.omniauth_providers.each do |provider|
     = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :class => "btn btn-sm btn-white btn-block"
     br
-- if controller_name != 'passwords'
-  p
-    - if controller_name == 'registrations'
-      small = t("devise.info.accepeted_statute_register").html_safe
-    - else
-      small = t("devise.info.accepeted_statute_login").html_safe
-    / = link_to t("devise.link.statute"), statute_for_devise_path,data: { toggle: "modal", target: "#modal_regulations" }, remote: true, class: "show_statute"
-    / a href='#modal_regulations' data-toggle="modal" data-target="#modal_regulations" Regulamin 
-    small = t("devise.info.use_site")
-  br
 br

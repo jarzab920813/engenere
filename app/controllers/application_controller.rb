@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   layout :layout_by_resource
+  helper_method :events_for_vehicle
 
 	protected
 	  def layout_by_resource
@@ -11,5 +12,8 @@ class ApplicationController < ActionController::Base
 	    else
 	      "application"
 	    end
+	  end
+	  def after_sign_in_path_for(user)
+	    root_path
 	  end
 end

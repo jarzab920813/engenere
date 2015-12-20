@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
   def index
-     @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
   end
   def create
-  	 @user = User.new
+  	@user = User.new
 	end
 
 end
