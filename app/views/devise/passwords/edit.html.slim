@@ -7,7 +7,7 @@ p.welcome_message = @splash_message.content.html_safe rescue "Tutaj powinna znaj
   = f.error_notification
   = f.input :reset_password_token, as: :hidden
   = f.full_error :reset_password_token
-  .form-inputs
+  .form-inputs.dev
     = f.input :password, required: true, autofocus: true, :placeholder => "Nowe hasło"
     = f.input :password_confirmation, required: true, :placeholder => "Potwierdzenie hasła"
   .form-actions

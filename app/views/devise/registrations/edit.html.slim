@@ -12,7 +12,7 @@
           .alert.alert-warning
             i.fa.fa-warning= t("accounts.waiting_for_confirmation", email: resource.unconfirmed_email) 
             = f.error_notification
-        .form-inputs
+        .form-inputs.dev
           = f.input :email, required: true, autofocus: true
           = f.input :password, hint: t("accounts.hint_leave_pass_empty"), required: false
           = f.input :password_confirmation, required: false

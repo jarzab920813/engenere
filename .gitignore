@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 /public/uploads/document/file
-/app/assets/viedos
+app/assets/viedos/*

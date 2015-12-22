@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-	# delegate :current_user
+
 	before_filter :authenticate_user!
 	def index
 
