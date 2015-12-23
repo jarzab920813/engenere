@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  
+  before_filter :authenticate_user!
 
 	def new
     if params[:id].present?

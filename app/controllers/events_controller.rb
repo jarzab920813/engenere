@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   def new
     if params[:id].present?
       @event = Event.new

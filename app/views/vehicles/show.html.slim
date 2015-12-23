@@ -28,7 +28,8 @@
 							td = @vehicle.model
 							td = @vehicle.vin
 							td = @vehicle.registration_number
-							td = @type_of_vehicle.name
+							-if @type_of_vehicle
+								td = @type_of_vehicle.name
 			section role="tabpanel" aria-hidden="false" class="content" id="documents"
 				-if @vehicle.documents.empty?
 				  div.alert.alert-warning role="alert" Brak dokumentów załączonych do tego pojazdu.

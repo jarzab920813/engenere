@@ -6,24 +6,13 @@
 			div.alert.alert-warning Brak dodanych pojzadów.
 		-else
 			.col-lg-12
-				table.table.table-striped
+				table id="vehicles" class="display" data-source= vehicles_url(format: "json")
 					thead
 						tr
 							th Nazwa
 							th Marka
 							th Model
 							th Nr. rejestracyjy	
-							th
-							th 
 					tbody
-						-@vehicles.each do |vehicle|
-							tr
-								td = link_to vehicle.name ,vehicle_path(vehicle)
-								td = vehicle.brand 
-								td = vehicle.model
-								td = vehicle.registration_number
-								td = link_to "edytuj", edit_vehicle_path(vehicle)
-								td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
 
 		= link_to "nowy pojazd", new_vehicle_path
-

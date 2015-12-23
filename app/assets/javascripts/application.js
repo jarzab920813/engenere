@@ -12,11 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.foundation
 //= require turbolinks
+//= require jquery.turbolinks
 //= require foundation
 //= require_tree .
 //= require foundation-datetimepicker
 //= require jquery.vide
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.foundation
 
 $(function() {
   $(document).foundation();

@@ -1,8 +1,13 @@
 class VehiclesController < ApplicationController
 
+  before_filter :authenticate_user!
 
 	def index
 		@vehicles = Vehicle.where(user_id: [current_user])
+    respond_to do |format|
+      format.html
+      format.json { render json: VehiclesDatatable.new(view_context) }
+    end
 	end
 
 	def show
