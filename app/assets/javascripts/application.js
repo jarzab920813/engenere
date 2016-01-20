@@ -22,6 +22,7 @@
 //= require jquery.vide
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.foundation
+//= require jquery-ui/sortable
 
 $(function() {
   $(document).foundation();

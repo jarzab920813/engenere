@@ -9,7 +9,20 @@
     - else
     	td
     		i.fa.fa-file
-    td 
+    td
+      / a.fa.fa-file  href="#" data-reveal-id="edit-document#{document.id}" 
+      /   .reveal-modal.text-center id="edit-document#{document.id}" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" 
+      /     = simple_form_for document do |f| 
+      /       / = f.error_notification 
+      /       .form-inputs
+      /         = f.input :name, required: true, :autofocus => true, :as => :string , label: 'Nazwa'
+      /         = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
+      /         = f.file_field :file, label: "Plik"
+      /         br
+      /       form-actions
+      /         = f.button :submit, "Zapisz"
+      /     / = render :partial => "form"
+      /       a class="close-reveal-modal" aria-label="Close" &#215
       a = link_to "usun", document_path(document.id),  class: "glyphicon glyphicon-remove", method: :delete, data:{confirm: "Czy jesteś pewien?"}
       a = "  "
       a.download href="#{ download_file_path(:id => document.id, :name => document.file_identifier) }"

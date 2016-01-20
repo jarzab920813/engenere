@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :fleets do
     #collection ścieżki do których nie przesyłamy id
     collection do 
+      post :save_fleets
     end
     #member  ścieżki do który przesyłamy id
     member do
@@ -39,7 +40,7 @@ Rails.application.routes.draw do
   	collection do 
     end
   	member do
-
+      get :new_similar
     end 
 
 	end

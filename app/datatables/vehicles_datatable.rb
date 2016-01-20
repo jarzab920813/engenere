@@ -38,7 +38,8 @@ private
       vehicles = vehicles.where("
         name like :search or
         brand like :search or
-        model like :search
+        model like :search or 
+        registration_number like :search
         ", search: "%#{params[:sSearch]}%")
     end
     vehicles

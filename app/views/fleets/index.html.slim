@@ -1,9 +1,9 @@
 
 
 .wrapper.wrapper-content
-  .row
+	.row
 		.col-lg-12
-			h1 floty
+			h1 Floty
 		-if @fleets.blank?
 			div.alert.alert-warning Brak dodanych flot.
 		-else
@@ -18,8 +18,61 @@
 						-@fleets.each do |fleet|
 							tr
 								td = link_to fleet.name ,fleet_path(fleet)
-								td = link_to "edytuj", edit_fleet_path(fleet)
-								td = link_to 'usuń', fleet_path(fleet) , :method => :delete, data: { confirm: "Are you sure?" }
+								/ td = link_to "edytuj", edit_fleet_path(fleet)
+								td.small href="#" data-reveal-id="fleet-#{fleet.id}" 
+									a Edytuj
+									.reveal-modal.text-center id="fleet-#{fleet.id}" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog"
+										div.a-unique-class 
+										= simple_form_for [fleet] do |f|
+										  / = f.error_notification
+										  .form-inputs
+												= f.input :name, label: t("fleets.labels.name"), :wrapper => :horizontal_form
+												= f.button :submit, "Zapisz"
+										a class="close-reveal-modal" aria-label="Close" &#215
+								td = link_to 'usuń', fleet_path(fleet) , :method => :delete, data: { confirm: "Jesteś pewny że chcesz usunąć #{fleet.name}?" }
 
 		= link_to "nowa flota", new_fleet_path
 
+	.row#fleets
+		-@fleets.each do |fleet|
+			div id="#{fleet.id}"
+				p = fleet.name
+				ul#sortable1.droptrue 
+					-find_vehicles(fleet).each do |vehicle|
+						li id="#{vehicle.id}" = link_to vehicle.name, vehicle_path(vehicle)
+		div id="000"
+			p Nieprzypisane
+			ul#sortable2.droptrue class="witchout_vehicles"
+				-@vehicles_without_fleets.each do |vehicle|
+					li id="#{vehicle.id}" = link_to vehicle.name, vehicle_path(vehicle)
+	.row
+		.btn#saving_feets Zapisz
+
+
+javascript: 
+  $("#saving_feets").click(function(){
+		
+    window.location.reload(true);
+    var fleetsId = new Array();
+    elements = $("#fleets").children();
+    var string_to_parse = new Array();
+
+    for (var i = 0; i < elements.length; i++){
+      fleetsId.push(elements[i].id.toString());
+    };
+
+    for (var i = 0; i < fleetsId.length; i++){
+    	fleet_childrens = $("#" + fleetsId[i]).children();
+    	vehicles =  fleet_childrens.children();
+    	for (var j = 0; j < vehicles.length; j++){	
+    		string_to_parse.push(fleetsId[i] + " " + vehicles[j].id);
+    	};
+    };
+    return $.ajax({
+      type: 'POST',
+      url: '/fleets/save_fleets',
+      data: {
+        value_menu: string_to_parse
+      }
+    });
+  });

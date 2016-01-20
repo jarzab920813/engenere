@@ -10,19 +10,41 @@ module DashboardHelper
     
   end
   def convert_datediff_to_string(date1, date2)
-    if date1.class == String && date2.class == String
-      time_diff = Time.diff(date1,date2)
-    else
-      time_diff = Time.diff(date1.strftime('%Y-%m-%d'), date2.strftime('%Y-%m-%d'))
-    end
 
-    s = ""
-    time_diff.each do |t|
-      if t[0] != :diff
-        s += t[1].to_s + " "
+    napis = ""
+    
+    if date1 < date2 
+      if date1.class == String && date2.class == String
+        time = Time.diff(date1,date2)
+      else
+        time = Time.diff(date1.strftime('%Y-%m-%d'), date2.strftime('%Y-%m-%d'))
       end
-    end
-    s[0...-2]
-  end
 
+      years = time[:year].to_s
+      months = time[:month].to_s
+      days = time[:day].to_s
+    
+      if time[:year] > 1
+        napis += "ponad " + years + " lata"
+      elsif time[:year] == 1
+        napis += "ponad rok"  
+      elsif time[:month] >= 5
+        napis += months + " miesięcy"
+      elsif time[:month] > 1 && months < 5
+        napis += months + " miesiące"
+      elsif time[:month] == 1
+        napis += months + " miesiąc"
+      elsif time[:day] > 1
+        napis += days + " dni"
+      elsif time[:day] == 1
+        napis += days + " dzień"
+      else
+        napis += "termin wygasa dzisiaj"
+      end    
+
+    else
+      napis = "Termin upłynął " + date2.strftime('%Y-%m-%d')
+    end
+    napis
+  end
 end

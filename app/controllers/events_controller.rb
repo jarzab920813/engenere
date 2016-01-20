@@ -50,6 +50,10 @@ class EventsController < ApplicationController
 
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def edit
     @event = Event.find(params[:id])
     # @current_user = User.find(current_user.id)
@@ -68,7 +72,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def new_similar
+    old_event = Event.find(params[:id])
+    @event = old_event.dup
+    old_event.completed = true
+    old_event.save
+    render :new
+  end
+
   def event_params
-  	params.require(:event).permit(:name, :date_event_start, :date_next_event, :current_mileage, :mileage_to_next_event, :vehicle_id, :type_of_event_id)
+  	params.require(:event).permit(:name, :date_event_start, :date_next_event, :current_mileage, :mileage_to_next_event, :vehicle_id, :type_of_event_id, :cost, :completed)
   end
 end

@@ -1,0 +1,7 @@
+= simple_form_for [@vehicle] do |f|
+  / = f.error_notification
+  .form-inputs
+    = f.input :mileage, label: t("vehicle.labels.mileage"), :wrapper => :horizontal_form
+    = f.input :average_mileage, label: t("vehicle.labels.average_mileage"), :wrapper => :horizontal_form
+   
+    = f.button :submit, "Zapisz"

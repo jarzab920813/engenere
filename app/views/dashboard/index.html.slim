@@ -11,22 +11,29 @@
 							th Data przeterminowania
 							th Dzas do przeterminowania
 							th 
+							th
 					tbody
 						-@vehicles.each do |vehicle|
 							-events_for_vehicle(vehicle).each do |event|
-								tr
-									td = vehicle.name
-									td = event.name
-									td = event.date_next_event.to_date
-									/ td = convert_datediff_to_string(vehicle)
-									-if event.date_next_event.nil? == false
-										/ -raise event.date_next_event.nil?.inspect
-										td = convert_datediff_to_string(Time.now, event.date_next_event)
-										/ -raise convert_datediff_to_string(Time.now, event.date_next_event).
-								
-								/ td = vehicle.registration_number
-								/ td = link_to "edytuj", edit_vehicle_path(vehicle)
-								/ td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
+								-if event.completed != true
+									tr
+										td = link_to vehicle.name, vehicle_path(vehicle)
+										td = event.name
+										td = event.date_next_event.to_date
+										-if event.date_next_event.nil? == false
+											td = convert_datediff_to_string(Time.now, event.date_next_event)
+										td
+											= link_to "Przestań przypominac", new_similar_event_path(event), class: "btn btn-primary "
+											/ input id="event_#{event.id}" type="checkbox"
+											/ label for="event_#{event.id}" Nie przypominaj
+										/ td = simple_form_for [event] do |f|
+										/ 	.form-inputs
+										/ 		= f.input :completed, as: :boolean
+																					
+									
+									/ td = vehicle.registration_number
+									/ td = link_to "edytuj", edit_vehicle_path(vehicle)
+									/ td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
 
-		/ = link_to "nowy pojazd", new_vehicle_path
+			/ = link_to "nowy pojazd", new_vehicle_path
 

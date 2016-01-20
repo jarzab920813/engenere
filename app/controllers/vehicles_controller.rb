@@ -12,14 +12,17 @@ class VehiclesController < ApplicationController
 
 	def show
 
- 		@vehicle = Vehicle.find(params[:id])
+    @vehicle = Vehicle.find(params[:id])
+ 		vehicle = Vehicle.find(params[:id])
  		@current_user = User.find(current_user.id)
-    @type_of_vehicle = TypesOfVehicle.where(:id => @vehicle.type_of_vehicle_id).first
-    #raise "scycki"
+    @type_of_vehicle = TypesOfVehicle.where(:id => vehicle.type_of_vehicle_id).first
     @documents = Document.where(:vehicle_id => params[:id])
     @events = Event.where(:vehicle_id => params[:id])
-    # @type_of_event = TypesOfEvent.where(:id => @events.type_of_event_id).first
-    # raise  @events
+
+    respond_to do |format|
+      format.html
+      format.json { render json: EventsDatatable.new(view_context) }
+    end
   end
 
 
@@ -75,7 +78,7 @@ class VehiclesController < ApplicationController
 	end
 
   def vehicle_params
-  	params.require(:vehicle).permit(:name, :year, :brand, :model, :vin, :registration_number, :type_of_vehicle_id, :fleet_id)
+  	params.require(:vehicle).permit(:name, :year, :brand, :model, :vin, :registration_number, :type_of_vehicle_id, :fleet_id, :mileage, :average_mileage)
   end
 
 end

@@ -1,0 +1,30 @@
+= simple_form_for [@event] do |f|
+  .row
+    .wrapper.wrapper-content
+      .row
+        .col-lg-12
+          .ibox.float-e-margins
+            .ibox-title
+              h3 = t('event.details', :title => @event.name) 
+            .ibox-content.form-container.col-lg-12
+              .form-horizontal.m-t-md.col-lg-4
+                ul 
+                  p 
+                    p nazwa
+                    = @event.name
+                  p 
+                    = f.text_field :name
+                    = f.label :name
+                / = form_control_static(t("event.labels.date_event_start"), @event.date_event_start)
+                / = form_control_static(t("event.labels.date_next_event"), @event.date_next_event)
+
+
+
+  / date_event_start
+  / date_event_start
+  /               = f.input :current_mileage, label: t("event.labels.current_mileage"), :wrapper => :horizontal_form
+  /     = f.input :mileage_to_next_event, label: t("event.labels.mileage_to_next_event"), :wrapper => :horizontal_form
+  /     = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
+  /     = f.input :type_of_event_id, label: t("event.labels.types_of_events"), :wrapper => :horizontal_form,  :selected => "", collection: TypesOfEvent.all
+  /     = f.input :cost , label: t("event.labels.cost"), :wrapper => :horizontal_form
+  /     = f.input :completed, as: :boolean, label: t("

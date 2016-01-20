@@ -20,15 +20,19 @@ pl:
       type_of_vehicle: "Typ pojazdu"
       fleet: "Flota"
       year: "Rok produkcji"
+      average_mileage: "Średni roczny przebieg"
+      mileage: "Przebieg pojazdu"
   event:
     deleted: "Wydarzenie usunięte"
     not_deleted: "Wydarzenie nie usunięte"
+    details: "Szczegóły"
     labels:
       name: "Nazwa zdarzenia"
       current_mileage: "Przebieg obecny"
       mileage_to_next_event: "Przebieg do następnego wydarzenia"
       date_event_start: "Dzień zdarzenia"
       date_next_event: "cos"
+      types_of_events: "Typ pojazdu"
   documents:
     deleted: "Dokument usunięty"
     not_deleted: "Dokument nie usunięty"

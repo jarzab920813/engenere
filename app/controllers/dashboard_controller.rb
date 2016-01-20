@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
 	def index
 
 		@events = find_events
-		@cos = current_user.vehicles.all
+		# @cos = current_user.vehicles.all
 		@vehicles = Vehicle.where(:user_id => current_user.id)
 		# raise @cos.inspect
 	end

@@ -17,40 +17,57 @@
 							th Rok produkcji
 							th Marka
 							th Model
+							th Przebieg bierzący
 							th VIN
 							th Numer rejestracyjny
 							th Typ pojazdu
+							th Akcje
 					tbody
 						tr
 							td = @vehicle.name 
 							td = @vehicle.year
 							td = @vehicle.brand
 							td = @vehicle.model
+							td = @vehicle.mileage
 							td = @vehicle.vin
 							td = @vehicle.registration_number
 							-if @type_of_vehicle
 								td = @type_of_vehicle.name
+							td 
+								/ a = link_to "Edytuj", edit_vehicle_path(@vehicle)
+								td.small href="#" data-reveal-id="edit-vehicle" 
+									a Edytuj
+									.reveal-modal.text-center id="edit-vehicle" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" 
+										= render :partial => "form"
+										a class="close-reveal-modal" aria-label="Close" &#215
+								td.small href="#" data-reveal-id="fast-update-vehicle" 
+									a Szybka edycja
+									.reveal-modal.text-center id="fast-update-vehicle" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" 
+										= render :partial => "fast_update"
+										a class="close-reveal-modal" aria-label="Close" &#215
+
 			section role="tabpanel" aria-hidden="false" class="content" id="documents"
 				-if @vehicle.documents.empty?
 				  div.alert.alert-warning role="alert" Brak dokumentów załączonych do tego pojazdu.
 				-else
-				  .panel.panel-default
-				    table.table.table-striped
-				      thead
-				        tr
-				          th Nazwa
-				          th Miniatura
-				          th Akcje
-				      tbody
-			          = render :partial => "tr_doc" 
+					.col-lg-12
+
+					  table.table.table-striped
+					    thead
+					      tr
+					        th Nazwa
+					        th Miniatura
+					        th Akcje
+					    tbody
+								= render :partial => "tr_doc" 
 
 				= link_to "Nowy dokument", new_document_path(:vehicle_id => params[:id]), class: "btn btn-primary "
 			section role="tabpanel" aria-hidden="false" class="content" id="events"
 				-if @vehicle.events.empty?
 					div.alert.alert-warning role="alert" Brak zdarzeń dla tego pojazdu.
 				-else
-					.panel.panel-default
-						table.table.table-striped
+					.col-lg-12
+						table id="events1" class="display" data-source= vehicle_url(format: "json")
 							thead
 								tr
 									th Zdarzenie
@@ -59,9 +76,9 @@
 									th Przebieg w dniu
 									th Przebieg przypominajka
 									th Typ zdarzenia
-									th akcje
+									th Akcje
 								tbody
-							= render :partial => "tr_events" 
+
 
 				= link_to "Nowe zdarzenie", new_event_path(:vehicle_id => params[:id]), class: "btn btn-primary "
 
