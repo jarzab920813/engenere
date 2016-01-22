@@ -22,7 +22,7 @@
     = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
     = f.input :type_of_event_id, label: t("event.labels.types_of_events"), :wrapper => :horizontal_form,  :selected => "", collection: TypesOfEvent.all
     = f.input :cost , label: t("event.labels.cost"), :wrapper => :horizontal_form
-    = f.input :completed, as: :boolean, label: t("event.labels.completed")
+    = f.input :completed, as: :boolean, label: t("event.labels.completed"), default: :false
 
 
     = f.button :submit, "Zapisz"

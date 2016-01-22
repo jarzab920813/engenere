@@ -1,5 +1,5 @@
 class EventsDatatable
-  delegate :params, :current_user, :content_tag, :link_to, :edit_event_path, :to => :@view
+  delegate :params, :current_user, :content_tag, :link_to, :t, :edit_event_path, :to => :@view
 
   def initialize(view)
     @view = view
@@ -76,7 +76,7 @@ private
       content_tag :i, '', :class => "fa fa-pencil-square-o", :data => { :toggle => "tooltip", :placement => "top"}, :title => "Edytuj"
     end
 
-    html << link_to(event, :method => :delete, :data => { :confirm => "clients.confirm_delete", :name => event.name }) do
+    html << link_to(event, :method => :delete, :data => { :confirm => t("event.confirm_delete"), :name => event.name }) do
       content_tag :i, '', :class => "fa fa-trash", :data => { :toggle => "tooltip", :placement => "top"}, :title => "Usuń"
     end
 
