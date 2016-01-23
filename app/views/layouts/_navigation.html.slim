@@ -7,8 +7,9 @@ nav.top-bar[data-topbar]
    /   a[href="#index"]
     /    Menu
 
-  .top-bar-section
+  .top-bar-section.center
    	- if  @current_user != nil	
+
       ul
         == render 'layouts/navigation_links'
       

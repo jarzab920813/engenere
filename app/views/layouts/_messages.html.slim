@@ -1,10 +1,13 @@
 / Rails flash messages styled for Zurb Foundation
 - flash.each do |name, msg|
   - if msg.is_a?(String)
+    / a.button href="#" title="My notification" content="Notification example" color="success" autoclose="3000" zf-notify="main-notifications" Dynamic Notification 
+    / zf-notification-set id="main-notifications" position="top-left"
     div[class="alert-box round #{name.to_s == 'notice' ? 'success' : 'alert'}" data-alert]
       = content_tag :div, msg
       a.close[href="#"]
         | ×
+
 
 javascript:
 

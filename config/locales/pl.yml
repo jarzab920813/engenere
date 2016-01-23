@@ -4,7 +4,12 @@ pl:
   is_true: "Tak"
   is_false: "Nie"
   blank: "Brak dancyh"
+  save: "Zapisz"
+  fleet:
+    deleted: "Flota usunięta"
+    save: "Flota dodana"
   fleets:
+    new: "Nowa flota"
     edit: "Edycja"
     deleted: "Flota usunięta"
     not_deleted: "Flota nie usunięta"
@@ -33,6 +38,7 @@ pl:
     not_deleted: "Wydarzenie nie usunięte"
     details: "Szczegóły"
     labels:
+      completed: "Nie przypominaj"
       cost: "Koszt"
       name: "Nazwa zdarzenia"
       current_mileage: "Przebieg obecny"

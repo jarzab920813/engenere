@@ -15,11 +15,14 @@ html
     -if user_signed_in?
       header
         == render 'layouts/navigation'
-      navigation
-        == render 'fleets/nav'
-      main[role="main"]
-        == render 'layouts/messages'
-        == yield
+      div.grid-block.center
+        nav.medium-2.column
+          == render 'fleets/nav'
+
+        main.medium-8.column[role="main"]
+          == render 'layouts/messages'
+          == yield
+        nav-vehicle.medium-2.column
     -else
       == yield
       / =link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
