@@ -24,6 +24,8 @@
 //= require dataTables/jquery.dataTables.foundation
 //= require jquery-ui/sortable
 //= foundation.util.keyboard.js
+//= foundation.accordionMenu.js
+//= foundation.core.js
 //
 $(function() {
   $(document).foundation();

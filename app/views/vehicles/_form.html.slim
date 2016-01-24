@@ -12,7 +12,7 @@
     = f.input :type_of_vehicle_id, label: t("vehicle.labels.type_of_vehicle"), :wrapper => :horizontal_form, :selected => "", collection: TypesOfVehicle.all
     = f.input :fleet_id, label: t("vehicle.labels.fleet"), :wrapper => :horizontal_form, collection: Fleet.where(:user_id => current_user)
    
-    = f.button :submit, "Zapisz"
+    = f.button :submit, "Zapisz", :class => 'universal-btn fix0' 
 
   / .hr-line-dashed
   / .form-group

@@ -59,7 +59,7 @@ private
   end
 
   def sort_column
-    columns = %w[name date_event_start date_next_event current_mileage ]
+    columns = %w[name date_event_start date_next_event current_mileage mileage_to_next_event types_of_events ]
     columns[params[:iSortCol_0].to_i]
   end
 

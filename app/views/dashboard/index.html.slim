@@ -18,12 +18,12 @@
 								-if event.completed != true
 									tr
 										td = link_to vehicle.name, vehicle_path(vehicle)
-										td = event.name
+										td = link_to event.name, event_path(event)
 										td = event.date_next_event.to_date
 										-if event.date_next_event.nil? == false
 											td = convert_datediff_to_string(Time.now, event.date_next_event)
 										td
-											= link_to "Przestań przypominac", new_similar_event_path(event), class: "btn btn-primary "
+											= link_to "Przestań przypominac", new_similar_event_path(event), class: "universal-btn "
 											/ input id="event_#{event.id}" type="checkbox"
 											/ label for="event_#{event.id}" Nie przypominaj
 										/ td = simple_form_for [event] do |f|

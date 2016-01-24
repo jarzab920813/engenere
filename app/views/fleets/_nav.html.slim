@@ -1,10 +1,16 @@
 ul class="vertical menu" data-accordion-menu=""
-  li
-    a href="#" Item 1
-    ul.menu.vertical
-      li 
-        a href="#" Item 1A
-      li
-        a href="#" Item 1B
-  li
-    a href="#" Item 2
+  -current_user.fleets.each do |fleet|
+    li.fleet-nav
+      p = fleet.name
+      ul.menu.vertical.nested
+        -find_vehicles(fleet).each do |vehicle|
+          li.vehicle-nav
+            a = link_to vehicle.name , vehicle_path(vehicle)
+  li.fleet-nav
+    p = t("others")
+    ul.menu.vertical.nested
+      -current_user.vehicles.where(:fleet_id => nil).each do |vehicle|
+        li.vehicle-nav
+          a = link_to vehicle.name, vehicle_path(vehicle)
+         
+= link_to t("new_vehicle").html_safe,  new_vehicle_path, :class => "universal-btn fix2"

@@ -6,7 +6,7 @@
           .ibox-title
             h3 = t('event.details', :title => @event.name) 
           .ibox-content.form-container.col-lg-12
-            .form-horizontal.m-t-md.col-lg-4
+            .form-horizontal.m-t-md.col-lg-4.event-data
               = form_control_static("Nazwa: ", @event.name)
               = form_control_static("Czas zdarzenia: ", @event.date_event_start)
               = form_control_static("Przypomnienie zdarzenia dnia: ", @event.date_next_event)
@@ -14,5 +14,7 @@
               = form_control_static("Przypomnienie zdarzenie przy przebiegu: ", @event.mileage_to_next_event)
               = form_control_static("Koszt zdarzenia: ", @event.cost)
               = form_control_static("Ustawione przypomnienie: ", @event.completed)
-          .btn = link_to t("edit"), edit_event_path(@event)
-          .btn = link_to t("back"), vehicle_path(@event.vehicle_id)
+          .col-lg-2
+            .row
+              = link_to t("back_to_vehicle"), vehicle_path(@event.vehicle_id),  class: "universal-btn fix1"
+              = link_to t("edit"), edit_event_path(@event), class: "universal-btn fix2"

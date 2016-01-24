@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 	before_filter :authenticate_user!
 	def index
 
-		@events = find_events
+		@events = find_events.sort_by {|obj| obj.date_next_event}
 		# @cos = current_user.vehicles.all
 		@vehicles = Vehicle.where(:user_id => current_user.id)
 		# raise @cos.inspect

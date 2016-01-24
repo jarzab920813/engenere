@@ -1,4 +1,18 @@
 pl:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email: 
+              blank: "Wpisz adres email"
+              invalid: "Email niepoprawny"
+            password: 
+              blank: "Wpisz hasło"
+
+  others: "Pozostałe"
+  new_vehicle: "Nowy pojazd"
+  back_to_vehicle: "Cofnij do danych pojazdu"
   edit: "Edytuj"
   back: "Cofnij"
   is_true: "Tak"
@@ -8,6 +22,7 @@ pl:
   fleet:
     deleted: "Flota usunięta"
     save: "Flota dodana"
+    update: "Zedytowano pomyślnie"
   fleets:
     new: "Nowa flota"
     edit: "Edycja"
@@ -47,5 +62,6 @@ pl:
       date_next_event: "cos"
       types_of_events: "Typ pojazdu"
   documents:
+    documents: "Dokumenty"
     deleted: "Dokument usunięty"
     not_deleted: "Dokument nie usunięty"

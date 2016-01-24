@@ -6,6 +6,5 @@
     = f.file_field :file, label: "Plik"
     br
 	form-actions
-  	= f.button :submit, "Zapisz"
-    span.or lub
-    = link_to "Wróć", :back, :class => "btn btn-default"
+  	= f.button :submit, t("save"), :class => "universal-btn fix2"
+    = f.button :submit, t("back"),  :class => "universal-btn fix1"

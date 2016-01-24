@@ -25,12 +25,12 @@
     = f.input :completed, as: :boolean, label: t("event.labels.completed"), default: :false
 
 
-    = f.button :submit, "Zapisz"
+    = f.button :submit, "Zapisz", :class => 'universal-btn fix0' 
 
   .hr-line-dashed
   .form-group
     .col-sm-4.col-sm-offset-2
-  = link_to 'cofnij', vehicle_path(:id => @event.vehicle_id)
+  = link_to t('back'), vehicle_path(:id => @event.vehicle_id), :class => 'universal-btn fix0' 
 
 javascript:
   $ ->

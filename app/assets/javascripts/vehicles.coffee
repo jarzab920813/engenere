@@ -40,7 +40,7 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     aoColumnDefs: [
-      { bSortable: false, aTargets: [ 0, -1 ] }
+      { bSortable: false, aTargets: [ 0, -2 ] }
     ],
     sAjaxSource: $('#events1').data('source')
     'language':

@@ -15,5 +15,6 @@
 							th Nr. rejestracyjy	
 					tbody
 
-		= link_to "nowy pojazd", new_vehicle_path
+		/ = link_to "nowy pojazd", new_vehicle_path
+		= link_to t("new_vehicle").html_safe,  new_vehicle_path, :class => "universal-btn fix2"
 		

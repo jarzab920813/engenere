@@ -20,7 +20,7 @@
 								= simple_form_for [fleet] do |f|
 								  .form-inputs
 										= f.input :name, label: t("fleets.labels.name"), :wrapper => :horizontal_form
-										= f.button :submit, "Zapisz"
+										= f.button :submit, "Zapisz", :class=> 'universal-btn fix0'
 								a class="close-reveal-modal" aria-label="Close" &#215
 						ul#sortable1.droptrue 
 							-find_vehicles(fleet).each do |vehicle|
@@ -32,13 +32,12 @@
 						-@vehicles_without_fleets.each do |vehicle|
 							li id="#{vehicle.id}" = link_to vehicle.name, vehicle_path(vehicle)
 				.labels.medium-3.column 
-					= link_to t("fleets.new").html_safe, new_fleet_path, :class => "button-v"
-					= link_to t("save").html_safe, fleets_path, :class => "button-v", :id => "saving_feets"
+					= link_to t("fleets.new").html_safe, new_fleet_path, :class => "universal-btn p100"
+					= link_to t("save").html_safe, fleets_path, :class => "universal-btn p100", :id => "saving_feets"
 					/ .button-save#saving_feets Zapisz
 
 javascript: 
   $("#saving_feets").click(function(){
-    window.location.reload(true);
     var fleetsId = new Array();
     elements = $("#fleets").children();
     var string_to_parse = new Array();
@@ -62,4 +61,5 @@ javascript:
         value_menu: string_to_parse
       }
     });
+    window.location.reload(true);
   });
