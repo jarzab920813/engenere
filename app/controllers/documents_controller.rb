@@ -7,7 +7,7 @@ class DocumentsController < ApplicationController
       @document = Document.new
       @document.vehicle_id = params[:id]
       @document.file = params[:file]
-      raise @document
+      
 
     end
     if params[:vehicle_id].present?
@@ -30,8 +30,8 @@ class DocumentsController < ApplicationController
       # raise @document
       # redirect_to  vehicle_path(Vehicle.find(@document.vehicle_id), @document.vehicle_id)
     else
-      flash[:notice] = "Dokument nie został dodany."
-      raise @document
+      flash[:error] = "Dokument nie został dodany."
+      redirect_to new_document_path(:id => @document.vehicle_id)
       # redirect_to vehicle_path(vehicle.find(@document.vehicle_path), :documents => 1)
     end
 

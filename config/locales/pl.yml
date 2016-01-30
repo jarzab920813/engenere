@@ -1,4 +1,9 @@
 pl:
+  date:
+    order:
+      - :day
+      - :month
+      - :year
   activerecord:
     errors:
       models:
@@ -23,6 +28,7 @@ pl:
     deleted: "Flota usunięta"
     save: "Flota dodana"
     update: "Zedytowano pomyślnie"
+    not_created: "Flota nie została utworzona"
   fleets:
     new: "Nowa flota"
     edit: "Edycja"
@@ -59,7 +65,7 @@ pl:
       current_mileage: "Przebieg obecny"
       mileage_to_next_event: "Przebieg do następnego wydarzenia"
       date_event_start: "Dzień zdarzenia"
-      date_next_event: "cos"
+      date_next_event: "Dzień następnego zdarzenia"
       types_of_events: "Typ pojazdu"
   documents:
     documents: "Dokumenty"

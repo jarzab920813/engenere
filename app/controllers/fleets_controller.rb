@@ -36,24 +36,29 @@ class FleetsController < ApplicationController
   	@fleet = Fleet.new(fleet_params)
   	@fleet.user_id = current_user.id
  	  @fleet.save
-  	redirect_to fleets_path
     if @fleet.save
-      flash[:success] = t("fleet.save")  
+      flash[:notice] = t("fleet.save")  
+      redirect_to fleets_path
     else
-      flash[:error] = t("fleet.not_deleted", :name => @fleet.name)
+      flash[:error] = t("fleet.not_created", :name => @fleet.name)
+      redirect_to new_fleet_path
     end
   	
   end	
 
   def destroy
   	@fleet = Fleet.find(params[:id])
-    # @fleet.id
-    # pojazdy = Vehicles.find(:fleet_id => @fleet.id)
-    # raise pojazdy.inspect
+    veh = Vehicle.where(:fleet_id => @fleet.id)
+    if !veh.blank?
+      veh.each do |v|
+        v.fleet_id = nil
+        v.save
+      end
+    end
 
     respond_to do |format|
       if @fleet.destroy
-        flash[:success] = t("fleet.deleted", :name => @fleet.name) 
+        flash[:notice] = t("fleet.deleted", :name => @fleet.name) 
         #Menu.where(parent_id: @menu.id).destroy_all
         #redirect_to @fleet
       else

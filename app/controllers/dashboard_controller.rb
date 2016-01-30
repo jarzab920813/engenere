@@ -13,10 +13,6 @@ class DashboardController < ApplicationController
 
 	end
 
-		#
-		# zwracam wszystkie pasujące eventy
-		#
-
 	def find_events
 		vehicles   = Vehicle.where(:user_id => current_user.id)
 		events_all = []

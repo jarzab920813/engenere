@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     if params[:id].present?
       @event = Event.new
       @event.vehicle_id = params[:id]
-      raise @event
+      # raise @event
     end
 
     if params[:vehicle_id].present?
@@ -26,8 +26,9 @@ class EventsController < ApplicationController
       # raise @document
       # redirect_to  vehicle_path(Vehicle.find(@document.vehicle_id), @document.vehicle_id)
     else
-      flash[:notice] = "Zdarzenie nie zostało dodane."
-      raise @document
+      flash[:error] = "Zdarzenie nie zostało dodane."
+      redirect_to new_event_path(:id => @event.vehicle_id)
+      # raise @document
       # redirect_to vehicle_path(vehicle.find(@document.vehicle_path), :documents => 1)
     end
   end 

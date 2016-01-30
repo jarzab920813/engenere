@@ -2,29 +2,18 @@
   / = f.error_notification
   .form-inputs
     = f.input :name, label: t("event.labels.name"), :wrapper => :horizontal_form
-    .row.form-group
-      label.col-sm-2.control-label = f.label :date_event_start
-      .col-sm-2
-        .input-group.date
-          span.input-group-addon
-            i.fa.fa-calendar
-          .datepicker = f.input_field :date_event_start, as: :string, class: "datetimepicker", :value => Time.now.strftime('%d-%m-%Y')
-    .row.form-group
-      label.col-sm-2.control-label = f.label :date_event_start
-      .col-sm-2
-        .input-group.date
-          span.input-group-addon
-            i.fa.fa-calendar
-          .datepicker = f.input_field :date_next_event, as: :string, class: "datetimepicker", :value => 12.months.from_now.strftime('%d-%m-%Y'),  label: t("event.labels.date_next_event")
+    .dates-events
+      = f.input :date_event_start, as: :date,  label: t("event.labels.date_event_start"), :wrapper => :horizontal_form
+      = f.input :date_next_event, as: :date,  label: t("event.labels.date_next_event"), :wrapper => :horizontal_form
+
 
     = f.input :current_mileage, label: t("event.labels.current_mileage"), :wrapper => :horizontal_form
     = f.input :mileage_to_next_event, label: t("event.labels.mileage_to_next_event"), :wrapper => :horizontal_form
     = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
     = f.input :type_of_event_id, label: t("event.labels.types_of_events"), :wrapper => :horizontal_form,  :selected => "", collection: TypesOfEvent.all
     = f.input :cost , label: t("event.labels.cost"), :wrapper => :horizontal_form
-    = f.input :completed, as: :boolean, label: t("event.labels.completed"), default: :false
-
-
+    .check-box
+       = f.input :completed, as: :boolean, label: t("event.labels.completed"), default: :false
     = f.button :submit, "Zapisz", :class => 'universal-btn fix0' 
 
   .hr-line-dashed
@@ -32,9 +21,3 @@
     .col-sm-4.col-sm-offset-2
   = link_to t('back'), vehicle_path(:id => @event.vehicle_id), :class => 'universal-btn fix0' 
 
-javascript:
-  $ ->
-    $('.datetimepicker').fdatetimepicker({
-      language: "pl",
-      format: "dd-mm-yyyy"
-    });

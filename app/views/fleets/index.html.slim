@@ -6,6 +6,8 @@
 			h1 Floty
 		-if @fleets.blank?
 			div.alert.alert-warning Brak dodanych flot.
+			.labels.medium-3.column 
+					= link_to t("fleets.new").html_safe, new_fleet_path, :class => "universal-btn p100"
 		-else
 			.row#fleets
 				-@fleets.each do |fleet|

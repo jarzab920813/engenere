@@ -124,6 +124,38 @@ body{
 //   width:100%;
 //   &:hover{background-color:#F7B125; color: black; }
 // }
+
+abbr {
+  font-size: 15px;
+  color: red;
+}
+
+// .dates-events {
+//   .input{height: 60px;}
+//   label{
+//     display: inline-block;
+//     text-align: right;
+//     width: 19%;
+//     padding-top: 7px;
+//   }
+//   select{
+//     width: 24%;
+//     float: right;
+//     margin-right: 7px;
+//   }
+// }
+.dates-events {
+  select{    width: 32.93%;}
+}
+.checkbox{
+  label{ font-size: 18px; }
+  input{   
+    margin: 5px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
 .button-v{
   transition: background-color 0.5s ease;
   background-color : #E6A82D;
@@ -201,6 +233,9 @@ a.download{
   font-size: 17px;
     &:hover{color:#E4740D; curosr:pointer;}
   i { margin-right: 7px;}
+}
+.fleet-nav p{
+  margin-top: 10px;
 }
 
 #fleets{

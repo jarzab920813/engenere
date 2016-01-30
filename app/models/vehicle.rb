@@ -4,5 +4,5 @@ class Vehicle < ActiveRecord::Base
 	has_many :documents
 	has_many :events
 
-
+  validates :name, :presence => true, length: { maximum: 255 }
 end

@@ -40,7 +40,8 @@ class VehiclesController < ApplicationController
       flash[:notice] =t("vehicle.created")
     	redirect_to @vehicle
     else
-      flash[:notice] =t("vehicle.not_created")
+      flash[:error] =t("vehicle.not_created")
+      redirect_to new_vehicle_path
     end
   end	
 

@@ -26,7 +26,8 @@
 //= foundation.util.keyboard.js
 //= foundation.accordionMenu.js
 //= foundation.core.js
-//
+//code.jquery.com/jquery-1.10.2.js
+//code.jquery.com/ui/1.11.4/jquery-ui.js
 $(function() {
   $(document).foundation();
 });
