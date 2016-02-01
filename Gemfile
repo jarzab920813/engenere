@@ -32,6 +32,9 @@ gem 'font-awesome-sass'
 gem 'foundation-datetimepicker-rails'
 gem 'time_diff'
 gem 'rails-i18n'
+gem 'chart-js-rails'
+gem 'lazy_high_charts'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

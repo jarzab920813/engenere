@@ -1,5 +1,10 @@
+
+
 .wrapper.wrapper-content
-  .row
+	/ .row
+	/   -events_for_user.each do |e|
+	/   	p =e.name
+	.row
 		.col-lg-12
 			h1 Przypomnienia
 			.col-lg-12
@@ -36,4 +41,29 @@
 									/ td = link_to 'usuń', vehicle_path(vehicle) , :method => :delete, data: { confirm: "Jesteś pewny?" }
 
 			/ = link_to "nowy pojazd", new_vehicle_path
+	/ .row
+	/ 	#canvas
 
+/ javascript:
+/   $(function() {
+/     new Highcharts.Chart({
+/       chart: {
+/         renderTo: 'canvas'
+/       },
+/       title:{
+/         text: 'coś tam '
+/       }, 
+/       xAxis: {
+/         type: "datatime"
+/       },
+/       yAxis: {
+/         title: {
+/           text: 'Koszt w zł'
+/         }
+/       },
+/       series: [{
+/         data: [1, 2, 5, 7]
+/       }]
+
+/     });
+/ 	});

@@ -14,10 +14,22 @@ class VehiclesController < ApplicationController
 
     @vehicle = Vehicle.find(params[:id])
  		vehicle = Vehicle.find(params[:id])
- 		@current_user = User.find(current_user.id)
+ 		# @current_user = User.find(current_user.id)
     @type_of_vehicle = TypesOfVehicle.where(:id => vehicle.type_of_vehicle_id).first
     @documents = Document.where(:vehicle_id => params[:id])
     @events = Event.where(:vehicle_id => params[:id])
+
+    @chart = LazyHighCharts::HighChart.new do |f|
+      f.title(text: "Koszty zdarzeń")
+      f.xAxis(type: 'datetime', dateTimeLabelFormats:{ month: '%e. %b' })
+      f.series(name: "Koszt w PLN", :data=> @events.map { |x| [x.date_event_start, x.cost] })
+      f.yAxis [
+       {title: {text: "Koszt w PLN", margin: 70} },
+      ]
+
+      f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
+      f.chart({ type: 'spline'})
+    end
 
     respond_to do |format|
       format.html
