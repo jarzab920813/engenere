@@ -97,12 +97,49 @@ h1.page-header = "Szczegóły " + @vehicle.name
 			/ 		= render :partial => "tr_doc" 
 
 	/ = link_to "Nowy dokument", new_document_path(:vehicle_id => params[:id]), class: "btn btn-primary "
+	.row 
+		-if !(@vehicle.events.empty?)
+			h1 Statystyki
+			=high_chart("some_id", @chart)
 	.row
 		= link_to t("back"), vehicles_path , class: "universal-btn fix2 "
+
+	/ .row
+	/ 	#canvas
 / .row
 / 	.column
 / 		= link_to 'cofnij', vehicles_path 
 
 
-javascript:
-  $(document).foundation();
+/ javascript:
+/   $(document).foundation();
+/   $(function () { 
+/     $('#canvas').highcharts({
+/         chart: {
+/             type: 'bar'
+/         },
+/         title: {
+/             text: 'Fruit Consumption'
+/         },
+/         xAxis: {
+/             categories: ['Apples']
+/         },
+/         yAxis: {
+/             title: {
+/                 text: 'Fruit eaten'
+/             }
+/         },
+/         series: [
+
+/           {
+/             name: '#{@events.first.name}',
+/             data: [#{@events.first.cost}]
+/           }, {
+/             name: 'John',
+/             data: [5]
+/           }]
+/     });
+/   });
+
+
+

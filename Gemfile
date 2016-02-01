@@ -35,6 +35,10 @@ gem 'rails-i18n'
 gem 'dotenv-rails'
 gem 'whenever', :require => false
 
+gem 'chart-js-rails'
+gem 'lazy_high_charts'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

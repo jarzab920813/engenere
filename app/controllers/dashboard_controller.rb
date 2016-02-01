@@ -45,7 +45,7 @@ class DashboardController < ApplicationController
 		@events = Event.where(:vehicle_id => vehicle.id)
 		return @events
 	end
-
+	
 	def time_to_terminate
 		time = self.date_next_event.to_date - Time.now.to_date
 		raise time.inspect
