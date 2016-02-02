@@ -9,15 +9,13 @@ module DashboardHelper
     # Time.diff(Time.parse('2011-03-06'), Time.parse('2011-03-07')
     
   end
-  # def events_for_user
-  #   vehicles = current_user.vehicles
-  #   @events 
-  #   vehicles.each do |v|
-  #     @events << v.events
-  #   end
-    
-  #   raise @events.inspect
-  # end
+  def events_for_user
+    @events = Event.where(:user_id => current_user.id, :completed => 0 ).order(:date_next_event).limit(10)
+  end
+  
+  def find_vehicle(event)
+    vehicle = Vehicle.find(event.vehicle_id)
+  end
 
   def convert_datediff_to_string(date1, date2)
 
