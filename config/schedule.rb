@@ -5,14 +5,17 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
-#
-every 5.minutes do
+# set :output, "/app/cron_log.log"
+
+set :environment, :development
+
+every :day, :at => '9:10 pm' do
   # command "/usr/bin/some_great_command"
   # runner "MyModel.some_method"
   # rake "some:great:rake:task"
-  puts "Weszlo!!!!!!!!!!!!!!!!"
+  # puts "Weszlo!!!!!!!!!!!!!!!!"
   rake "check:send"
+  rake "update:mileage"
   # UserMailer.after_create.deliver
 
 end
