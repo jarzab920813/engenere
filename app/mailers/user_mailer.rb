@@ -8,10 +8,9 @@ class UserMailer < ApplicationMailer
 	end
 
 
-	def pass_reminder(user)
-		# layout 'mail_layouts/pass_reminder.html.slim'
-		path = "#{Rails.root}/app/views/layouts/mail_layouts/pass_reminder.html"
+	def pass_reminder(user, event)
 		@user = user
-		mail to: @user.email, subject: "#{@user.email} Przypominamy o wydarzeniu",:template_path => path, :template_name => 'pass_reminder.html'
+		@event = event
+		mail to: @user.email, subject: "#{@user.email} Przypominamy o wydarzeniu"
 	end
 end

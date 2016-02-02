@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 
 
 	def pass_mail
-		UserMailer.pass_reminder(self.user).deliver
+		UserMailer.pass_reminder(self.user, self).deliver
 	end
 	
 end
