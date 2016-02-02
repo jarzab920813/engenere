@@ -20,9 +20,14 @@ class VehiclesController < ApplicationController
     @events = Event.where(:vehicle_id => params[:id])
 
     @chart = LazyHighCharts::HighChart.new do |f|
+      f.setOptions({
+        lang: { 
+          months: [ "Styczeń" , "Luty" ,'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'] 
+        } 
+      })
       f.title(text: "Koszty zdarzeń")
-      f.xAxis(type: 'datetime', dateTimeLabelFormats:{ month: '%e. %b' })
-      f.series(name: "Koszt w PLN", :data=> @events.map { |x| [x.date_event_start, x.cost] })
+      f.xAxis(type: 'datetime')
+      f.series(name: "Koszt w PLN", :data=> @events.map { |x| [Time.parse(x.created_at.to_s).utc.to_i*1000, x.cost] })
       f.yAxis [
        {title: {text: "Koszt w PLN", margin: 70} },
       ]
