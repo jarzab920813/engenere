@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114104845) do
+ActiveRecord::Schema.define(version: 20160202153339) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160114104845) do
     t.datetime "updated_at",                                       null: false
     t.decimal  "cost",                              precision: 10
     t.boolean  "completed"
+    t.integer  "user_id",               limit: 4
   end
 
   create_table "fleets", force: :cascade do |t|

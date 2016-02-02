@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(event_params)
+    @event.user_id = current_user.id
 
     if @event.save
       flash[:notice] = "Zdarzenie zostało dodane."
