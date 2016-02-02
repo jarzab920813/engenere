@@ -15,7 +15,7 @@ development:
   database: vechicles-management-system_development
   pool: 5
   username: root
-  password: j
+  password: m
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
