@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
 
   has_many :fleets
   has_many :vehicles
+  has_many :events
 
   after_create :send_mail_informing
 
 
   def send_mail_informing
-  	UserMailer.after_create.deliver
+  	UserMailer.after_create(self).deliver
 
   end
 

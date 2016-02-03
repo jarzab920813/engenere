@@ -5,4 +5,14 @@ class Vehicle < ActiveRecord::Base
 	has_many :events
 
   validates :name, :presence => true, length: { maximum: 255 }
+
+
+
+
+  def update_mileage
+  	sr = average_mileage / 365
+  	sr += mileage 
+  	self.update_column(:mileage, sr )
+  end
+
 end
