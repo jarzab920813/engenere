@@ -9,7 +9,7 @@
 
 set :environment, :development
 
-every :day, :at => '9:10 pm' do
+every :day, :at => '6:56 pm' do
   # command "/usr/bin/some_great_command"
   # runner "MyModel.some_method"
   # rake "some:great:rake:task"
