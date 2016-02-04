@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202153339) do
+ActiveRecord::Schema.define(version: 20160203202412) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160202153339) do
     t.decimal  "cost",                              precision: 10
     t.boolean  "completed"
     t.integer  "user_id",               limit: 4
+    t.boolean  "sended"
   end
 
   create_table "fleets", force: :cascade do |t|
@@ -84,10 +85,10 @@ ActiveRecord::Schema.define(version: 20160202153339) do
     t.string   "registration_number", limit: 255
     t.string   "type_of_vehicle_id",  limit: 255
     t.integer  "user_id",             limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "fleet_id",            limit: 4
-    t.integer  "mileage",             limit: 4
+    t.decimal  "mileage",                         precision: 11
     t.integer  "average_mileage",     limit: 4
   end
 

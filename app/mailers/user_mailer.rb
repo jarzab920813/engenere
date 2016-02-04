@@ -17,4 +17,5 @@ class UserMailer < ApplicationMailer
 			format.html { render :file => "#{Rails.root}/app/views/user_mailer/pass_reminder.html.slim" }
 		end 
 	end
+
 end

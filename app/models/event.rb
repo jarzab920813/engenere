@@ -11,10 +11,8 @@ class Event < ActiveRecord::Base
 		return event.name
 	end
 
-
 	def pass_mail
 		UserMailer.pass_reminder(self.user, self).deliver
-
 	end
 	
 end
