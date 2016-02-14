@@ -10,13 +10,9 @@
 set :environment, :development
 
 every :day, :at => '5:00 pm' do
-  # command "/usr/bin/some_great_command"
-  # runner "MyModel.some_method"
-  # rake "some:great:rake:task"
-  # puts "Weszlo!!!!!!!!!!!!!!!!"
-  rake "check:send"
+
+  rake "check:send_mail"
   rake "update:mileage"
-  # UserMailer.after_create.deliver
 
 end
 #

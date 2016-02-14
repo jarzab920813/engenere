@@ -5,9 +5,8 @@
     .dates-events
       = f.input :date_event_start, as: :date,  label: t("event.labels.date_event_start"), :wrapper => :horizontal_form
       = f.input :date_next_event, as: :date,  label: t("event.labels.date_next_event"), :wrapper => :horizontal_form
-
-
-    = f.input :current_mileage, label: t("event.labels.current_mileage"), :wrapper => :horizontal_form
+    
+    = f.input :current_mileage, label: t("event.labels.current_mileage"),:wrapper => :horizontal_form
     = f.input :mileage_to_next_event, label: t("event.labels.mileage_to_next_event"), :wrapper => :horizontal_form
     = f.input :vehicle_id ,as: :hidden, value: params[:vehicle_id]
     = f.input :type_of_event_id, label: t("event.labels.types_of_events"), :wrapper => :horizontal_form,  :selected => "", collection: TypesOfEvent.all

@@ -6,13 +6,20 @@ class EventsController < ApplicationController
     if params[:id].present?
       @event = Event.new
       @event.vehicle_id = params[:id]
+      @v_id = params[:id].to_i
     end
 
     if params[:vehicle_id].present?
       @event = Event.new
       @event.vehicle_id = params[:vehicle_id]
+      @v_id = params[:vehicle_id].to_i
+    end
+    @vehicle = Vehicle.find(@v_id)
+    if !@vehicle.mileage.nil?
+      @event.current_mileage = @vehicle.mileage
     end
   end
+  
   
   def create
     @event = Event.new(event_params)

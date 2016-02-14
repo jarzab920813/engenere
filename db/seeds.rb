@@ -17,3 +17,15 @@ unless TypesOfVehicle.any?
 
   TypesOfVehicle.create( trading_types )
 end
+
+unless TypesOfEvent.any?
+  puts "Dodaje zdarzenia ..."
+  trading_types = [
+    { name: "Naprawa" },
+    { name: "Ubezpieczenie" },
+    { name: "Przegląd techniczny" },
+    { name: "Inne" }
+  ]
+
+  TypesOfEvent.create( trading_types )
+end

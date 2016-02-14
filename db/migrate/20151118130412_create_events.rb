@@ -4,8 +4,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :name
       t.date :date_event_start
       t.date :date_next_event
-      t.integer :current_mileage
-      t.integer :mileage_to_next_event
+      t.decimal :current_mileage
+      t.decimal :mileage_to_next_event
       t.integer :vehicle_id
       t.integer :type_of_event_id
 

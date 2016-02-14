@@ -2,13 +2,7 @@
   p.margin_top_devise_note
     small = t("devise.info.you_have_account")
     = link_to t("devise.buttons.log_in"), new_session_path(resource_name), :class => "btn"
-- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  br
-  pmargin_top_devise_note.text-center
-    small
-      = link_to t("devise.info.forgot_password"), new_password_path(resource_name)
-- if devise_mapping.confirmable? && controller_name != 'confirmations'
-  = link_to t("devise.info.not_received_confirmation"), new_confirmation_path(resource_name), :class => "btn btn-sm btn-white btn-block"
+
 - if devise_mapping.registerable? && controller_name != 'registrations'
   p.text-center
     small = t("devise.info.not_have_account")
