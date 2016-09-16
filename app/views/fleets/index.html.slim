@@ -44,7 +44,7 @@ javascript:
     elements = $("#fleets").children();
     var string_to_parse = new Array();
 
-    for (var i = 0; i < elements.length; i++){
+    for (var i = 0; i < elements.length-1; i++){
       fleetsId.push(elements[i].id.toString());
     };
 
@@ -55,6 +55,9 @@ javascript:
     		string_to_parse.push(fleetsId[i] + " " + vehicles[j].id);
     	};
     };
+    alert (string_to_parse)
+
+
 
     return $.ajax({
       type: 'POST',

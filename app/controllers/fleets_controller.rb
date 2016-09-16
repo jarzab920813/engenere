@@ -93,6 +93,7 @@ class FleetsController < ApplicationController
   end
 
   def save_fleets
+    logger.debug params[:value_menu]
     params[:value_menu].each do |fleet|
       tmp = fleet.split(" ")
       vehicle = Vehicle.find(tmp[1])

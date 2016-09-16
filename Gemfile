@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+## gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -39,9 +39,6 @@ gem 'chart-js-rails'
 gem 'lazy_high_charts'
 
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -58,7 +55,7 @@ gem 'mysql2', '~> 0.3.18' # mysql adapter
 gem 'devise'
 gem "slim-rails"
 gem 'carrierwave'
-gem 'rmagick'
+gem 'rmagick', '~> 2.15', '>= 2.15.2'
 gem "cancan"
 gem 'vider', github: "gentoo-pl/vider"
 gem 'jquery-datatables-rails', '~> 3.3.0'
@@ -71,5 +68,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+group :production do
+	gem 'rails_12factor' 
 end
 
