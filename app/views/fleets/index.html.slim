@@ -40,24 +40,15 @@
 
 javascript: 
   $("#saving_feets").click(function(){
-    var fleetsId = new Array();
-    elements = $("#fleets").children();
+    el = document.querySelectorAll('div.fleet');
     var string_to_parse = new Array();
-
-    for (var i = 0; i < elements.length-1; i++){
-      fleetsId.push(elements[i].id.toString());
-    };
-
-    for (var i = 0; i < fleetsId.length; i++){
-    	fleet_childrens = $("#" + fleetsId[i]).children();
-    	vehicles =  fleet_childrens.children().last();
-    	for (var j = 0; j < vehicles.length; j++){	
-    		string_to_parse.push(fleetsId[i] + " " + vehicles[j].id);
-    	};
-    };
-    alert (string_to_parse)
-
-
+    for (var i = 0; i < el.length; i++){
+      cars = el[i].querySelectorAll('li');
+ 
+      for (var j = 0; j < cars.length; j++){
+        string_to_parse.push(el[i].id + " " + cars[j].id);
+      }
+    }
 
     return $.ajax({
       type: 'POST',
@@ -68,3 +59,4 @@ javascript:
     });
     window.location.reload(true);
   });
+   
